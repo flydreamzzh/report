@@ -8,6 +8,7 @@ class AngularAsset extends AssetBundle
 {
     public $sourcePath = '@bower';
     public $js = [
+        'require/require.js',
         'angular/angular.js',
         'angular-route/angular-route.js',
         'angular-strap/dist/angular-strap.js',
