@@ -19,8 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "bower-asset/angular": "1.5.8",
-		"bower-asset/angular-route": "*",
-		"bower-asset/angular-strap": "*"
+		"bower-asset/angular-route": "1.5.8",
+		"bower-asset/angular-strap": "2.3.10"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
