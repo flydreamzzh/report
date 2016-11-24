@@ -10,5 +10,5 @@ use common\base\controller\BaseController;
  */
 class FrontendController extends BaseController
 {
-    
+    public $layout = 'main';
 }
