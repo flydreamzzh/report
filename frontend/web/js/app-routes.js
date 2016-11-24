@@ -1,6 +1,4 @@
-define(function (require) {
-    var app = require('./app');
-
+define(['app'],function (app) {
     app.run(['$state', '$stateParams', '$rootScope', function ($state, $stateParams, $rootScope) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
@@ -12,9 +10,9 @@ define(function (require) {
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'home/home.html',
+                templateUrl: 'view/home/home.html',
                  // new attribute for ajax load controller
-                controllerUrl: 'home/homeCtrl',
+                controllerUrl: 'scripts/controller/home/homeCtrl',
                 controller: 'homeCtrl'
             })
             .state('users', {
