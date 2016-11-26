@@ -14,7 +14,7 @@ require.config({
     },
     shim: {
         'angular': {exports: 'angular'},
-        'angular-animate': {deps: 'angular'},
+        'angular-animate': {deps: ['angular']},
         'angular-ui-router': {deps: ['angular']},
         'angular-strap': {deps: ['angular']},
         'angular-strap-tpl': {deps: ['angular','angular-strap']},
