@@ -14,12 +14,20 @@ require.config({
     },
     shim: {
         'angular': {exports: 'angular'},
-        'angular-animate': {deps: ['angular']},
-        'angular-ui-router': {deps: ['angular']},
-        'angular-strap': {deps: ['angular']},
-        'angular-strap-tpl': {deps: ['angular','angular-strap']},
-        'app': {deps: ['angular']},
-    }
+        'angular-animate': ['angular'],
+        'angular-ui-router': ['angular'],
+        'angular-strap': ['angular'],
+        'angular-strap-tpl': ['angular','angular-strap'],
+        'app': ['angular'],
+    },
+    map: {
+        '*': {
+            'css': 'lib/require-css/css.min'
+        }
+    },
+    deps: [
+           
+       ]
 });
 
 require(['angular','./app-routes'], function (angular) {
