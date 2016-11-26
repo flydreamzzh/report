@@ -2,6 +2,7 @@ require.config({
     baseUrl: 'js',
     paths: {
         'angular': 'lib/angular/angular.min',
+        'angular-animate': 'lib/angular-animate/angular-animate.min',
         'angular-ui-router': 'lib/angular-ui-router/release/angular-ui-router.min',
         'angular-async-loader': 'lib/angular-async-loader/angular-async-loader.min',
         'angular-ui-mask': 'lib/angular-ui-mask/dist/mask.min',
@@ -13,6 +14,7 @@ require.config({
     },
     shim: {
         'angular': {exports: 'angular'},
+        'angular-animate': {deps: 'angular'},
         'angular-ui-router': {deps: ['angular']},
         'angular-strap': {deps: ['angular']},
         'angular-strap-tpl': {deps: ['angular','angular-strap']},
