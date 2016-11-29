@@ -17,13 +17,13 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
-    <title>REPORT</title>
+    <title>TSKYLAKE</title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 	<nav></nav>
-    <div ui-view></div>
+    <div ui-view class="app"></div>
 	<footer></footer>
 <?php $this->endBody() ?>
 </body>

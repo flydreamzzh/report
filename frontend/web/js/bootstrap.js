@@ -26,7 +26,8 @@ require.config({
         }
     },
     deps: [
-           'css!../css/angular-motion/dist/angular-motion.min.css'
+           'css!../css/angular-motion/dist/angular-motion.min.css',
+           'css!../css/app.css'
        ]
 });
 

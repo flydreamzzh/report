@@ -1,4 +1,68 @@
 body{
-	background: url(../../images/background.jpg) no-repeat center;
-	background-size:100% 100%;
+	background: -webkit-radial-gradient(skyblue,lightsteelblue); /* Safari 5.1 - 6.0 */
+	background: -o-radial-gradient(skyblue,lightsteelblue); /* Opera 11.6 - 12.0 */
+	background: -moz-radial-gradient(skyblue,lightsteelblue); /* Firefox 3.6 - 15 */
+	background: radial-gradient(#4bebe8, #4ea1eb); /* 标准的语法（必须放在最后） */
+}
+
+.login{
+	position: absolute;
+	width: 400px;
+	height: 280px;
+	margin-top: -140px;
+	margin-right: -200px;
+	top: 50%;
+	right: 50%;
+	box-shadow: 0 0 20px 2px #777777;
+	border-radius: 10px;
+	background-color: #e7e7e7;
+	opacity: 0.85;
+}
+
+.login .login_title{
+	position: absolute;
+	width: 100%;
+	height: 90px;
+	border-bottom: 2px #777777 solid;
+}
+
+.login .login_title>div:first-child{
+	position: relative;
+	width: 30%;
+	height: 100%;
+	text-align: center;
+}
+
+.login .login_title>div img{
+	position: relative;
+	height: 75px;
+	margin: 10px auto 0 auto;
+}
+
+.login .login_title_content{
+	padding-left: 10px;
+	position: absolute;
+	width: 70%;
+	right: 0;
+	height: 50px;
+	bottom: 10px;
+	border-left: 2px lightskyblue solid;
+	font-size: 20px;
+}
+
+.login .login_title_content:first-letter{
+	font-size: 45px;
+}
+
+.login .login_body{
+	position: absolute;
+	width: 100%;
+	top: 90px;
+	bottom: 0;
+	padding-top: 10px;
+}
+
+.login .login_body label{
+	letter-spacing: 5px;
+	text-align: center;
 }
