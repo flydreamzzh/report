@@ -42,4 +42,12 @@ class SiteController extends FrontendController
     {
         return $this->renderContent(null);
     }
+    
+    /**
+     * 
+     */
+    public function login()
+    {
+        
+    }
 }
