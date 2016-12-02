@@ -5,31 +5,14 @@ define(['app'],function (app) {
     }]);
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/login');
 
         $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'view/home/home.html',
-                 // new attribute for ajax load controller
-                controllerUrl: 'scripts/controller/home/homeCtrl',
-                controller: 'homeCtrl'
-            })
-            .state('users', {
-                url: '/users',
-                templateUrl: 'users/users.html',
-                 // new attribute for ajax load controller
-                controllerUrl: 'users/usersCtrl',
-                controller: 'usersCtrl',
-                // load more controllers, services, filters, ...
-                dependencies: ['services/usersService']
-            })
-            .state('components', {
-                url: '/components',
-                templateUrl: 'components/components.html',
-                 // new attribute for ajax load controller
-                controllerUrl: 'components/componentsCtrl',
-                controller: 'componentsCtrl'
+            .state('login', {
+                url: '/login',
+                templateUrl: 'view/login/login.html',
+                controllerUrl: 'scripts/controller/login/loginCtrl',
+                controller: 'loginCtrl',
             });
     }]);
 });

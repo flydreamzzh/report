@@ -1,5 +1,5 @@
-define(['app','post','css!../../../../css/home/home'],function (app) {
-    app.controller('homeCtrl', function($scope,postService) {
+define(['app','post','css!../../../../css/login/login'],function (app) {
+    app.controller('loginCtrl', function($scope,postService) {
     	$scope.user = {username:'',userpass:''};
 		$scope.checkuser = function(){
 			if(!$scope.user.username) {
