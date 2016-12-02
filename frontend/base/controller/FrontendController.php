@@ -24,4 +24,13 @@ class FrontendController extends BaseController
         $request = $post?$post:$RawBody;
         return $request;
     }
+    
+    /**
+     * 输出前端数据格式JSON
+     * @param array $data
+     */
+    public function out(array $data)
+    {
+        return json_encode($data,true);
+    }
 }

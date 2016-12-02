@@ -2,16 +2,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 use frontend\base\controller\FrontendController;
 
 /**
@@ -56,11 +48,19 @@ class SiteController extends FrontendController
     }
     
     /**
-     * 
+     * 用户登录
+     * @return array
      */
     public function actionLogin()
     {
-        $post = $this->post();
-        var_dump($post);
+        $data = $this->post();
+        $loginForm = new LoginForm();
+        $loginForm->username = $data['username'];
+        $loginForm->password = $data['password'];
+        if($loginForm->login()) {
+            return $this->out([true]);
+        }else {
+            return $this->out([false,'账号不存在或密码错误']);
+        }
     }
 }

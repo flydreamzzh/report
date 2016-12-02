@@ -1,6 +1,6 @@
 define(['app','css!../../../../css/login/login'],function (app) {
     app.controller('loginCtrl', function($scope,$http,$location) {
-    	$scope.user = {username:'',userpass:''};
+    	$scope.user = {username:'',password:''};
 		$scope.checkuser = function(){
 			if(!$scope.user.username) {
 				$scope.matchuser = 0;
@@ -11,7 +11,7 @@ define(['app','css!../../../../css/login/login'],function (app) {
 			}
 		}
 		$scope.checkpass = function(){
-			if(!$scope.user.userpass) {
+			if(!$scope.user.password) {
 				$scope.matchpass = 0;
 			} else {
 				$scope.matchpass = 1;
