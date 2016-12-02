@@ -1,5 +1,5 @@
-define(['app','post','css!../../../../css/login/login'],function (app) {
-    app.controller('loginCtrl', function($scope,postService) {
+define(['app','css!../../../../css/login/login'],function (app) {
+    app.controller('loginCtrl', function($scope,$http,$location) {
     	$scope.user = {username:'',userpass:''};
 		$scope.checkuser = function(){
 			if(!$scope.user.username) {
@@ -18,8 +18,12 @@ define(['app','post','css!../../../../css/login/login'],function (app) {
 			}
 		}
 		$scope.login = function(){
-			postService.post('/site/login').success(function(response){
-				console.log("a");
+			$http({
+				method:'post',
+				url:'/site/login',
+				data:$scope.user,
+			}).success(function(response){
+				console.log(response);
 			});
 		}
 

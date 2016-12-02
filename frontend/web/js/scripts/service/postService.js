@@ -3,15 +3,17 @@
  */
 define(['app'],function(app){
     app.factory('postService',['$http',function($http){
-        var doRequest = function(url) {
+        var doRequest = function(url,data) {
             return $http({
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 method: 'POST',
                 url: url,
+                data:data
             });
         }
         return {
-            post: function(url) {
-                return doRequest(url);
+            post: function(url,data) {
+                return doRequest(url,data);
             }
         };
     }]);

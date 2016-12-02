@@ -60,6 +60,7 @@ class SiteController extends FrontendController
      */
     public function actionLogin()
     {
-        return "dd";
+        $post = $this->post();
+        var_dump($post);
     }
 }
