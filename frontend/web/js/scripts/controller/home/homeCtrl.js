@@ -1,5 +1,5 @@
-define(['app','css!../../../../css/home/home'],function (app) {
-    app.controller('homeCtrl', function($scope) {
+define(['app','post','css!../../../../css/home/home'],function (app) {
+    app.controller('homeCtrl', function($scope,postService) {
     	$scope.user = {username:'',userpass:''};
 		$scope.checkuser = function(){
 			if(!$scope.user.username) {
@@ -17,5 +17,11 @@ define(['app','css!../../../../css/home/home'],function (app) {
 				$scope.matchpass = 1;
 			}
 		}
+		$scope.login = function(){
+			postService.post('/site/login').success(function(response){
+				console.log("a");
+			});
+		}
+
     });
 });

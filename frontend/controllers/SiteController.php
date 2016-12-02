@@ -35,6 +35,18 @@ class SiteController extends FrontendController
     }
     
     /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ]
+        ];
+    }
+    
+    /**
      * 
      * @return string
      */
@@ -46,8 +58,8 @@ class SiteController extends FrontendController
     /**
      * 
      */
-    public function login()
+    public function actionLogin()
     {
-        
+        return "dd";
     }
 }

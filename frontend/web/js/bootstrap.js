@@ -11,6 +11,8 @@ require.config({
         'angular-strap': 'lib/angular-strap/dist/angular-strap.min',
         'angular-strap-tpl': 'lib/angular-strap/dist/angular-strap.tpl.min',
         'app': 'scripts/app',
+        /**********************   Service  **************************/
+        'post':'scripts/service/postService',
     },
     shim: {
         'angular': {exports: 'angular'},

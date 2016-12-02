@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-12 col-xs-offset-1">
-                    <input type="button" class="col-xs-10 btn btn-primary btn-md" ng-class="{false:'',true:'disabled'}[!matchuser||!matchpass]" value="登&nbsp;&nbsp;&nbsp;&nbsp;录">
+                    <input type="button" ng-click="login()" class="col-xs-10 btn btn-primary btn-md" ng-class="{false:'',true:'disabled'}[!matchuser||!matchpass]" value="登&nbsp;&nbsp;&nbsp;&nbsp;录">
                 </div>
             </div>
         </form>
