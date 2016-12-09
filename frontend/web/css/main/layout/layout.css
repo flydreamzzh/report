@@ -1,0 +1,111 @@
+.layout{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.layout .body{
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    padding: 0;
+}
+
+.layout .foot{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    background-color: #bce8f1;
+}
+
+.layout .body .body_left{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    background-color: red;
+}
+
+.layout .body .body_right{
+    position: absolute;
+    height: 100%;
+    padding: 0;
+    left: 20%;
+    right: 0;
+}
+
+/*.layout .body .body_right*/
+.sky_main {
+    position: absolute;
+    left: 0;
+    right: 150px;
+    height: 100%;
+}
+
+.sky_main_head {
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    background-color: #4bebe8;
+}
+
+.sky_main_body {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+    bottom: 0;
+    background-color: #5cb85c;
+}
+
+.sky_other {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    right: 0;
+}
+
+.sky_other_user {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    background-color: #aaaaaa;
+}
+
+.sky_other_message {
+    position: absolute;
+    width: 100%;
+    top: 150px;
+    bottom: 0;
+    background-color: aqua;
+}
+
+@media (max-height: 768px) {
+    .layout .body{
+        height: 100%;
+    }
+
+    .layout .foot{
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .layout .body .body_left{
+        display: none;
+    }
+
+    .layout .body .body_right{
+        width: 100%;
+        left: 0;
+    }
+
+    .sky_main {
+        right: 0;
+    }
+
+    .sky_other {
+        display: none;
+    }
+}
+
+
