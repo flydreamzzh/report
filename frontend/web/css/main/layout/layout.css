@@ -79,12 +79,22 @@
     background-color: aqua;
 }
 
-@media (max-height: 768px) {
+@media (max-height: 600px) {
     .layout .body{
         height: 100%;
     }
 
     .layout .foot{
+        display: none;
+    }
+}
+
+@media (max-height: 400px) {
+    .sky_main_body{
+        top: 0;
+    }
+
+    .sky_main_head{
         display: none;
     }
 }
@@ -98,7 +108,9 @@
         width: 100%;
         left: 0;
     }
+}
 
+@media (max-width: 768px) {
     .sky_main {
         right: 0;
     }
