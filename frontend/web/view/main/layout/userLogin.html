@@ -1,7 +1,5 @@
-<div class="userLogin" ng-controller="userLoginCtrl">
-    <!--<input type="hidden" name="bgShow"  ng-model="bgShow">-->
-    <input type="checkbox" ng-model="bgShow">
-    <div ng-show="bgShow" class="userLoginBg">
+<div class="userLogin" ng-controller="userLoginCtrl" ng-mouseover="ngShow()" ng-mouseleave="ngHide()">
+    <div class="userLoginBg" ></div>
     </div>
 </div>
 
@@ -14,21 +12,28 @@
         cursor: pointer;
     }
     .userLoginBg{
+        transition: all linear 0.5s;
         width: 100%;
         height: 100%;
         background: black;
-        opacity: 0.5;
+        opacity: 0;
     }
-    @keyframes bgShow {
-        from {
+
+    @keyframes fade {
+        form {
             opacity: 0;
-        } to {
-            opacity: 1;
+        }
+        to {
+            opacity: 0.5;
         }
     }
-    .userLoginBg .ng-show {
-        animation: 1s bgShow;
+
+    .bdfade{
+        animation: fade 1s both ease-in;
     }
+
+
+
 
 </style>
 

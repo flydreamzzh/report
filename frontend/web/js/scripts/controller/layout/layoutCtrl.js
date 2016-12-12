@@ -7,12 +7,14 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
     });
 
     app.controller('userLoginCtrl',function($scope){
-        //$scope.show = function() {
-        //    $scope.bgShow = true;
-        //
-        //}
-        //$scope.hide = function() {
-        //    $scope.bgShow = false;
-        //}
-    })
+        $scope.ngShow = function(){
+            $scope.myCheck = true;
+            $scope.myCheck = true;
+            angular.element('.userLoginBg').addClass('bdfade');
+        }
+        $scope.ngHide = function(){
+            $scope.myCheck = false;
+            angular.element('.userLoginBg').removeClass('bdfade');
+        }
+    });
 })
