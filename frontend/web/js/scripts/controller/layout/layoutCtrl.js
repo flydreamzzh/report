@@ -5,16 +5,12 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
     app.controller('layoutCtrl',function($scope){
 
     });
-
     app.controller('userLoginCtrl',function($scope){
-        $scope.ngShow = function(){
-            $scope.myCheck = true;
-            $scope.myCheck = true;
-            angular.element('.userLoginBg').addClass('bdfade');
-        }
-        $scope.ngHide = function(){
-            $scope.myCheck = false;
-            angular.element('.userLoginBg').removeClass('bdfade');
-        }
+        $scope.ngShow = function() {
+            $scope.bgshow = true;
+        };
+        $scope.ngHide = function() {
+            $scope.bgshow = false;
+        };
     });
 })
