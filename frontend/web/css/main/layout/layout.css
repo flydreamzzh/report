@@ -9,6 +9,7 @@
     width: 100%;
     height: 85%;
     padding: 0;
+    top: 0;
 }
 
 .layout .foot{
@@ -23,8 +24,26 @@
     position: absolute;
     height: 100%;
     width: 20%;
-    background-color: red;
+    background-color: orangered;
+    z-index: 1;
 }
+.layout .body_left_hide{
+    position: absolute;
+    display: none;
+    width: 18px;
+    height: 200px;
+    top: 50%;
+    margin-top: -100px;
+    color: white;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 8px;
+    z-index: 2;
+    opacity: 0.5;
+    line-height: 200px;
+    border: 2px solid silver;
+}
+
 
 .layout .body .body_right{
     position: absolute;
@@ -32,6 +51,7 @@
     padding: 0;
     left: 20%;
     right: 0;
+    z-index: 1;
 }
 
 /*.layout .body .body_right*/
@@ -79,6 +99,18 @@
     background-color: aqua;
 }
 
+.layout .layout_tool{
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+    left: 30px;
+    width: 150px;
+    height: 200px;
+    background-color: darkmagenta;
+    z-index: 1000;
+    opacity: 0.5;
+}
+
 @media (max-height: 600px) {
     .layout .body{
         height: 100%;
@@ -100,24 +132,38 @@
 }
 
 @media (max-width: 992px) {
+    .layout .body_left_hide{
+        display: block;
+    }
     .layout .body .body_left{
         display: none;
     }
-
     .layout .body .body_right{
         width: 100%;
         left: 0;
     }
 }
-
 @media (max-width: 768px) {
     .sky_main {
         right: 0;
     }
-
     .sky_other {
         display: none;
     }
 }
 
+
+
+/*****/
+.layout_left{
+    position: relative;
+    width: 280px;
+    height: 100%;
+    background-color: white;
+}
+.layout_left_body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 

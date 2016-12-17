@@ -10,6 +10,7 @@ require.config({
         'ng-file-upload': 'lib/ng-file-upload/dist/ng-file-upload-all.min',
         'angular-strap': 'lib/angular-strap/dist/angular-strap.min',
         'angular-strap-tpl': 'lib/angular-strap/dist/angular-strap.tpl.min',
+        'angular-sanitize': 'lib/angular-sanitize/angular-sanitize.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postService',
@@ -28,8 +29,9 @@ require.config({
         }
     },
     deps: [
-           'css!../css/angular-motion/dist/angular-motion.min.css',
-           'css!../css/app.css'
+            'css!../css/angular-motion/dist/angular-motion.min.css',
+            'css!../css/bootstrap-additions-master/dist/bootstrap-additions.min.css',
+            'css!../css/app.css'
        ]
 });
 

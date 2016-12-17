@@ -13,4 +13,10 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
             $scope.bgshow = false;
         };
     });
+    //app.config(function($asideProvider) {
+    //    angular.extend($asideProvider.defaults, {
+    //        container: 'body',
+    //        html: true
+    //    });
+    //})
 })
