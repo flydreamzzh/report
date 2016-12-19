@@ -5,6 +5,7 @@ define(function (require, exports, module) {
     require('angular-strap-tpl');
     require('angular-animate');
     require('angular-sanitize');
+    require('mobile-angular-ui');
 
     var app = angular.module('app', ['ui.router','ngAnimate','mgcrea.ngStrap','ngSanitize']);
     asyncLoader.configure(app);
