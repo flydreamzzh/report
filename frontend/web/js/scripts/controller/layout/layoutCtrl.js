@@ -3,7 +3,10 @@
  */
 define(['app','css!../../../../css/main/layout/layout'],function(app){
     app.controller('layoutCtrl',function($scope){
-
+        $scope.coll = false;
+        $scope.toggle = function() {
+            $scope.coll = !$scope.coll;
+        };
     });
     app.controller('userLoginCtrl',function($scope){
         $scope.ngShow = function() {
@@ -12,6 +15,7 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
         $scope.ngHide = function() {
             $scope.bgshow = false;
         };
+
     });
     //app.config(function($asideProvider) {
     //    angular.extend($asideProvider.defaults, {
