@@ -1,0 +1,46 @@
+<div class="sky_navbar">
+    <div class="list-group sky_li">
+        <a href="#" class="list-group-item" title="Cras justo odio"><span class="glyphicon glyphicon-search"></span>Cras justo odio</a>
+        <a href="#" class="list-group-item" title="Dapibus ac facilisis in"><span class="glyphicon glyphicon-home"></span>Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item" title="Morbi leo risus"><span class="glyphicon glyphicon-user"></span>Morbi leo risus</a>
+        <a href="#" class="list-group-item" title="Porta ac consectetur ac"><span class="glyphicon glyphicon-trash"></span>Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item" title="Vestibulum at eros"><span class="glyphicon glyphicon-asterisk"></span>Vestibulum at eros</a>
+    </div>
+</div>
+
+<style type="text/css">
+    .sky_navbar{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        padding-right: 3px;
+    }
+
+    .sky_navbar .sky_li span{
+        margin-left: 12px;
+        margin-right: 13px;
+        font-size: 15px;
+    }
+
+    .sky_navbar .sky_li a{
+        z-index: 1;
+        padding-left: 0;
+        white-space:nowrap;
+    }
+
+    .sky_navbar .sky_li a:before{
+          background-color: thistle;
+          content: '';
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          -webkit-transition: width 0.2s ease-in;
+          transition: width 0.2s ease-in;
+          width: 2px;
+          z-index: -1;
+      }
+
+
+</style>

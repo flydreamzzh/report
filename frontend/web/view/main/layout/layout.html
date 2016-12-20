@@ -1,13 +1,15 @@
 <div ng-controller="layoutCtrl" class="layout">
-    <!--<div class="body_left_hide" bs-aside="aside" data-template-url="view/main/layout/layout_left.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside">-->
+    <!--<div class="body_left_hide" bs-aside="aside" data-template-url="view/main/layout/navbar.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside">-->
         <!--<span class="glyphicon glyphicon-indent-left"></span>-->
     <!--</div>-->
     <div class="body">
         <div ng-class="{true:'body_left_collapse',false:'body_left'}[coll]">
-
             <div class="body_left_title">
                 <div class="sky_disable"></div>
                 <span class="sky_icon glyphicon glyphicon-align-justify pull-right" ng-click="toggle()" disabled></span>
+            </div>
+            <div class="left_navbar" ng-include="'view/main/layout/navbar.html'">
+
             </div>
         </div>
         <div ng-class="{true:'body_right_collapse',false:'body_right'}[coll]">
@@ -16,7 +18,7 @@
 
                 </div>
                 <div class="sky_main_body">
-
+                    <div ui-view class="sky_view"></div>
                 </div>
             </div>
             <div class="sky_other">

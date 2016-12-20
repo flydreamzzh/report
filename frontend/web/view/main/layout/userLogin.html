@@ -1,18 +1,18 @@
 <div class="userLogin" ng-controller="userLoginCtrl" ng-mouseover="ngShow()" ng-mouseleave="ngHide()">
-    <div class="userLoginBg" ng-class="{false:'',true:'bdfade'}[bgshow]" ></div>
-    <div class="arrow-up">
+    <!--<div class="userLoginBg" ng-class="{false:'',true:'bdfade'}[bgshow]" ></div>-->
+    <div class="arrow arrow-up">
         <span class="glyphicon glyphicon-cog"></span>
     </div>
-    <div class="arrow-down">
+    <div class="arrow arrow-down">
         <span class="glyphicon glyphicon-th-large"></span>
     </div>
-    <div class="arrow-left">
+    <div class="arrow arrow-left">
         <span class="glyphicon glyphicon-search"></span>
     </div>
-    <div class="arrow-right">
+    <div class="arrow arrow-right">
         <span class="glyphicon glyphicon-off"></span>
     </div>
-    <div class="arrow-center">
+    <div class="arrow arrow-center">
         <span class="glyphicon glyphicon-home"></span>
     </div>
 </div>
@@ -23,7 +23,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background: #3c3c3c;
+        background: rgb(48, 170, 255);
         background-size: 100% 100%;
         overflow: hidden;
     }
@@ -33,7 +33,7 @@
         transition: all linear 0.5s;
         width: 100%;
         height: 100%;
-        background: black;
+        background: white;
         opacity: .3;
         z-index: 2;
     }
@@ -49,6 +49,11 @@
     .bdfade{
         animation: fade 0.1s both ease-in;
     }
+
+    .arrow span:hover{
+        color: black;
+    }
+
     .arrow-up {
         position: absolute;
         top: -52px;
@@ -59,7 +64,7 @@
         -ms-transform: rotate(45deg); /* IE 9 */
         -webkit-transform: rotate(45deg); /* Safari and Chrome */
         /*background: darkorange;*/
-        border: 1px solid saddlebrown;
+        border: 1px solid white;
         z-index: 1;
     }
     .arrow-up span{
@@ -67,7 +72,7 @@
         display: block;
         top: 58px;
         left: 57px;
-        color: darksalmon;
+        color: white;
         font-size: 24px;
         transform: rotate(-45deg);
         -ms-transform: rotate(-45deg); /* IE 9 */
@@ -84,7 +89,7 @@
         -ms-transform: rotate(45deg); /* IE 9 */
         -webkit-transform: rotate(45deg); /* Safari and Chrome */
         /*background: darkorchid;*/
-        border: 1px solid saddlebrown;
+        border: 1px solid white;
         z-index: 1;
     }
     .arrow-down span{
@@ -92,7 +97,7 @@
         display: block;
         top: 25px;
         left: 25px;
-        color: lightsalmon;
+        color: white;
         font-size: 24px;
         transform: rotate(-45deg);
         -ms-transform: rotate(-45deg); /* IE 9 */
@@ -109,7 +114,7 @@
         -ms-transform: rotate(45deg); /* IE 9 */
         -webkit-transform: rotate(45deg); /* Safari and Chrome */
         /*background: darkolivegreen;*/
-        border: 1px solid saddlebrown;
+        border: 1px solid white;
         z-index: 1;
     }
     .arrow-left span{
@@ -117,7 +122,7 @@
         display: block;
         top: 25px;
         left: 58px;
-        color: lightsalmon;
+        color: white;
         font-size: 24px;
         transform: rotate(-45deg);
         -ms-transform: rotate(-45deg); /* IE 9 */
@@ -135,7 +140,7 @@
         -ms-transform: rotate(45deg); /* IE 9 */
         -webkit-transform: rotate(45deg); /* Safari and Chrome */
         /*background: darkmagenta;*/
-        border: 1px solid saddlebrown;
+        border: 1px solid white;
         z-index: 1;
     }
 
@@ -144,7 +149,7 @@
         display: block;
         top: 58px;
         left: 25px;
-        color: lightsalmon;
+        color: white;
         font-size: 24px;
         transform: rotate(-45deg);
         -ms-transform: rotate(-45deg); /* IE 9 */
@@ -158,7 +163,7 @@
         margin: 45px 45px;
         background: #585858;
         opacity: 1;
-        border: 1px solid saddlebrown;
+        border: 1px solid white;
         z-index: 3;
     }
     .arrow-center span{
@@ -166,7 +171,7 @@
         width: 24px;
         height: 24px;
         margin: 18px 17px;
-        color: cornflowerblue;
+        color: rgb(33, 144, 255);
         font-size: 22px;
         cursor: pointer;
     }
