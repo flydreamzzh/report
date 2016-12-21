@@ -153,7 +153,7 @@
 
 .sky_main_head {
     position: absolute;
-    height: 100px;
+    height: 70px;
     width: 100%;
     background-color: white;
     box-shadow: 0px 1px 10px 1px #484848;
@@ -164,37 +164,37 @@
     width: 250px;
     height: 100%;
     background: url('/images/tskylake.jpg') no-repeat center;
-    -webkit-background-size: 95%;
-    background-size: 95%;
+    -webkit-background-size: 75%;
+    background-size: 75%;
 }
 .sky_main_head .user_mes{
     position: absolute;
     width: 250px;
     height: 100%;
-    right: 0;
+    right: 15px;
     background-color: white;
+    overflow: hidden;
 }
 .sky_main_head .user_mes:before{
     position: absolute;
     content: '';
     width: 100px;
-    height: 100px;
+    height: 70px;
     background: url("/images/user.png") no-repeat center;
 }
 .sky_main_head .user_mes a{
-    position: absolute;
+    margin-left: 100px;
     font-size: 20px;
-    display: block;
-    height: 100%;
     left: 100px;
-    line-height: 100px;
+    line-height: 70px;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .sky_main_body {
     position: absolute;
     width: 100%;
-    top: 100px;
+    top: 70px;
     bottom: 0;
     background-color: #e9e9e9;
     z-index: 1;
