@@ -239,15 +239,15 @@
     .layout .body_left_hide{
         display: block;
     }
-    /*.layout .body .body_left{*/
-        /*width: 40px;*/
-    /*}*/
-    /*.layout .body .body_right{*/
-        /*left: 40px;*/
-    /*}*/
-    /*.body_left_title .sky_disable{*/
-        /*display: block;*/
-    /*}*/
+    .layout .body .body_left{
+        width: 40px;
+    }
+    .layout .body .body_right{
+        left: 40px;
+    }
+    .body_left_title .sky_disable{
+        display: block;
+    }
 }
 @media (max-width: 768px) {
     .sky_main {

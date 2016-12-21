@@ -14,9 +14,6 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
                 $scope.coll = false;
             }
         };
-        $scope.swipe = function(aa) {
-alert("s");
-        }
     });
     app.controller('userLoginCtrl',function($scope){
         $scope.ngShow = function() {
