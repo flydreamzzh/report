@@ -8,7 +8,7 @@
                 <div class="sky_disable"></div>
                 <span class="sky_icon glyphicon glyphicon-align-justify pull-right" ng-click="toggle()" disabled></span>
             </div>
-            <div class="left_navbar" ng-include="'view/main/layout/navbar.html'">
+            <div class="left_navbar" ng-include="'view/main/layout/navbar.html'"  ng-swipe-left="closeLeft('LEFT')" ng-swipe-right="closeLeft('RIGHT')">
 
             </div>
         </div>
@@ -18,7 +18,9 @@
 
                 </div>
                 <div class="sky_main_body">
-                    <div ui-view class="sky_view"></div>
+                    <div ui-view class="sky_view">
+                        {{coll}}
+                    </div>
                 </div>
             </div>
             <div class="sky_other">
@@ -31,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="foot scrollable-content section" ng-swipe-left="swiped('LEFT')" ng-swipe-right="swiped('RIGHT')">
+    <div class="foot">
 
     </div>
 </div>

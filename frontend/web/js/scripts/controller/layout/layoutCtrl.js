@@ -7,8 +7,12 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
         $scope.toggle = function() {
             $scope.coll = !$scope.coll;
         };
-        $scope.swiped = function(direction) {
-            alert('Swiped ' + direction);
+        $scope.closeLeft = function(direction) {
+            if(direction=='LEFT') {
+                $scope.coll = true;
+            }else {
+                $scope.coll = false;
+            }
         };
     });
     app.controller('userLoginCtrl',function($scope){
