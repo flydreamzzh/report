@@ -11,9 +11,10 @@ require.config({
         'angular-strap': 'lib/angular-strap/dist/angular-strap.min',
         'angular-strap-tpl': 'lib/angular-strap/dist/angular-strap.tpl.min',
         'angular-sanitize': 'lib/angular-sanitize/angular-sanitize.min',
-        'mobile-angular-ui':'lib/mobile-angular-ui-1.3.4/dist/js/mobile-angular-ui.min',
-        'mobile-angular-ui-core':'lib/mobile-angular-ui-1.3.4/dist/js/mobile-angular-ui.core.min',
-        'mobile-angular-ui-gestures':'lib/mobile-angular-ui-1.3.4/dist/js/mobile-angular-ui.gestures.min',
+        'mobile-angular-ui':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.min',
+        'mobile-angular-ui-core':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.core.min',
+        'mobile-angular-ui-gestures':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.gestures.min',
+        'mobile-angular-ui.components':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.components.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postService',
@@ -25,7 +26,7 @@ require.config({
         'angular-strap': ['angular'],
         'angular-sanitize': ['angular'],
         'angular-strap-tpl': ['angular','angular-strap'],
-        'mobile-angular-ui':['angular','mobile-angular-ui-core','mobile-angular-ui-gestures'],
+        'mobile-angular-ui':['angular','mobile-angular-ui-core','mobile-angular-ui-gestures','mobile-angular-ui.components'],
         'app': ['angular'],
     },
     map: {
@@ -36,9 +37,9 @@ require.config({
     deps: [
             'css!../css/angular-motion/dist/angular-motion.min.css',
             'css!../css/bootstrap-additions-master/dist/bootstrap-additions.min.css',
-            'css!../../../js/lib/mobile-angular-ui-1.3.4/dist/css/mobile-angular-ui-hover.min.css',
-            'css!../../../js/lib/mobile-angular-ui-1.3.4/dist/css/mobile-angular-ui-base.min.css',
-            'css!../../../js/lib/mobile-angular-ui-1.3.4/dist/css/mobile-angular-ui-desktop.min.css',
+            'css!../../../js/lib/mobile-angular-ui-1.2.0/dist/css/mobile-angular-ui-hover.min.css',
+            'css!../../../js/lib/mobile-angular-ui-1.2.0/dist/css/mobile-angular-ui-base.min.css',
+            'css!../../../js/lib/mobile-angular-ui-1.2.0/dist/css/mobile-angular-ui-desktop.min.css',
             'css!../css/app.css'
        ]
 });

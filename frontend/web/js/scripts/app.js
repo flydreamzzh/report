@@ -7,7 +7,14 @@ define(function (require, exports, module) {
     require('angular-sanitize');
     require('mobile-angular-ui');
 
-    var app = angular.module('app', ['ui.router','ngAnimate','mgcrea.ngStrap','ngSanitize']);
+    var app = angular.module('app', [
+        'ui.router',
+        'ngAnimate',
+        'mgcrea.ngStrap',
+        'ngSanitize',
+        "mobile-angular-ui",
+        "mobile-angular-ui.gestures",
+    ]);
     asyncLoader.configure(app);
     module.exports = app;
 });
