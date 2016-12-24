@@ -6,6 +6,7 @@ define(function (require, exports, module) {
     require('angular-animate');
     require('angular-sanitize');
     require('mobile-angular-ui');
+    require('ui-bootstrap');
 
     var app = angular.module('app', [
         'ui.router',
@@ -14,6 +15,7 @@ define(function (require, exports, module) {
         'ngSanitize',
         "mobile-angular-ui",
         "mobile-angular-ui.gestures",
+        'ui.bootstrap',
     ]);
     asyncLoader.configure(app);
     module.exports = app;

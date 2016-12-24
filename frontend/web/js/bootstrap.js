@@ -15,6 +15,7 @@ require.config({
         'mobile-angular-ui-core':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.core.min',
         'mobile-angular-ui-gestures':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.gestures.min',
         'mobile-angular-ui.components':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.components.min',
+        'ui-bootstrap':'lib/ui-bootstrap/ui-bootstrap-tpls-2.3.1.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postService',

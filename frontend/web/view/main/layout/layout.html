@@ -14,10 +14,21 @@
         </div>
         <div ng-class="{true:'body_right_collapse',false:'body_right'}[coll]">
             <div class="sky_main">
-                <div class="sky_main_head">
-                    <div class="sky_symbol"></div>
-                    <div class="user_mes">
-                        <a class="text-info">张先生</a>
+                <div class="sky_main_head navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" ng-click="aa = !aa">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">TSKYLAKE</a>
+                    </div>
+                    <div class="collapse navbar-collapse" uib-collapse="aa">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">功能</a></li>
+                            <li class="user_mes"><img src="/images/user.png"><a href="#">张先生</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="sky_main_body">
