@@ -246,13 +246,7 @@
 }
 
 @media (max-height: 400px) {
-    .sky_main_body{
-        top: 0;
-    }
 
-    .sky_main_head{
-        display: none;
-    }
 }
 
 @media (max-width: 992px) {
