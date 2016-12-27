@@ -1,7 +1,4 @@
 <div ng-controller="layoutCtrl" class="layout">
-    <!--<div class="body_left_hide" bs-aside="aside" data-template-url="view/main/layout/navbar.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside">-->
-        <!--<span class="glyphicon glyphicon-indent-left"></span>-->
-    <!--</div>-->
     <div class="body">
         <div ng-class="{true:'body_left_collapse',false:'body_left'}[coll]">
             <div class="body_left_title">
@@ -26,8 +23,8 @@
                     </div>
                     <div class="collapse navbar-collapse" uib-collapse="aa">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">功能</a></li>
-                            <li class="user_mes"><img src="/images/user.png"><a href="#">张先生</a></li>
+                            <li><a>功能</a></li>
+                            <li class="user_mes"><img src="/images/user.png"><a container="body" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal">张先生</a></li>
                         </ul>
                     </div>
                 </div>
