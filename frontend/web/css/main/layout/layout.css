@@ -6,7 +6,7 @@
 
 .layout .sky_icon{
     font-size: 20px;
-    color: white;
+    color: dodgerblue;
     margin-top: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -33,6 +33,21 @@
     padding: 0;
     top: 0;
     z-index: 1;
+}
+
+.left_icon{
+    display: none;
+    float: left;
+    width: 30px;
+    height: 100%;
+    text-align: right;
+    line-height: 50px;
+    color: dodgerblue;
+    font-size: 16px;
+    cursor: pointer;
+}
+.left_icon:hover {
+    opacity: 0.8;
 }
 
 .layout .foot{
@@ -239,6 +254,9 @@
     .layout .body{
         height: 100%;
     }
+    .layout .body .sky_main_body .sky_view {
+        bottom: 0;
+    }
 
     .layout .foot{
         display: none;
@@ -251,12 +269,19 @@
 
 @media (max-width: 992px) {
     .layout .body .body_left{
-        width: 40px;
+        width: 0;
+        display: none;
     }
     .layout .body .body_right{
-        left: 40px;
+        left: 0;
+    }
+    .layout .body .sky_main_body .sky_view {
+        left: 0;
     }
     .body_left_title .sky_disable{
+        display: block;
+    }
+    .left_icon{
         display: block;
     }
 }
@@ -266,6 +291,9 @@
     }
     .sky_other {
         display: none;
+    }
+    .layout .body .sky_main_body .sky_view {
+        right: 0;
     }
 }
 
