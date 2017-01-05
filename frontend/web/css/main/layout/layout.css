@@ -41,7 +41,7 @@
     width: 30px;
     height: 100%;
     text-align: right;
-    line-height: 50px;
+    line-height: 48px;
     color: dodgerblue;
     font-size: 16px;
     cursor: pointer;
@@ -177,16 +177,15 @@
     width: 100%;
     top: 50px;
     bottom: 0;
-    background-color: #e9e9e9;
     z-index: 1;
 }
 
 .sky_main_body .sky_view{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
     background-color: white;
     overflow: auto;
 }
