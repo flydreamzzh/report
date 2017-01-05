@@ -41,7 +41,7 @@
     width: 30px;
     height: 100%;
     text-align: right;
-    line-height: 48px;
+    line-height: 47px;
     color: dodgerblue;
     font-size: 16px;
     cursor: pointer;
@@ -177,6 +177,7 @@
     width: 100%;
     top: 50px;
     bottom: 0;
+    background-color: white;
     z-index: 1;
 }
 
