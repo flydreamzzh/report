@@ -91,16 +91,6 @@
     z-index: 1;
 }
 
-@keyframes collapse_rightback{
-    from{
-        left: 180px;
-        z-index: 1;
-    }to{
-        left: 0;
-        z-index: 3;
-     }
-}
-
 .layout .body .body_right{
     position: absolute;
     height: 100%;
@@ -111,21 +101,13 @@
     transition: left 400ms ease;
 }
 
-@keyframes  collapse_right{
-    from{
-        left: 0;
-        z-index: 3;
-    }to{
-        left: 180px;
-        z-index: 1;
-     }
-}
-
 .layout .body .body_right_collapse{
     position: absolute;
     height: 100%;
     padding: 0;
-    animation: collapse_right 0.2s both ease-in !important;
+    /*animation: collapse_right 0.2s both ease-in !important;*/
+    left: 180px !important;
+    z-index: 1 !important;
     right: 0;
 }
 
@@ -258,7 +240,8 @@
 
 @media (max-width: 992px) {
     .layout .body .body_right{
-        animation: collapse_rightback 0.2s both ease-in;
+        left: 0;
+        z-index: 3;
     }
     .body_left_title .sky_disable{
         display: block;
