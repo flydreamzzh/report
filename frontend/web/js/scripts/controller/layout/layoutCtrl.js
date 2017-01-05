@@ -3,7 +3,7 @@
  */
 define(['app','css!../../../../css/main/layout/layout'],function(app){
     app.controller('layoutCtrl',function($scope){
-        $scope.aa = true;
+        $scope.headCollapse = true;
         $scope.coll = false;
         $scope.toggle = function() {
             $scope.coll = !$scope.coll;
@@ -25,10 +25,4 @@ define(['app','css!../../../../css/main/layout/layout'],function(app){
         };
 
     });
-    //app.config(function($asideProvider) {
-    //    angular.extend($asideProvider.defaults, {
-    //        container: 'body',
-    //        html: true
-    //    });
-    //})
 })
