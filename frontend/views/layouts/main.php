@@ -26,7 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 	<nav></nav>
-    <div ui-view class="app"></div>
+    <div ui-view class="mainApp"></div>
 	<footer></footer>
 <?php $this->endBody() ?>
 </body>

@@ -1,6 +1,6 @@
 <div ng-controller="layoutCtrl" class="layout">
     <div class="body">
-        <div ng-class="{true:'body_left_collapse',false:'body_left'}[coll]">
+        <div class="body_left">
             <div class="body_left_title">
                 <div class="sky_disable"></div>
                 <span class="sky_icon glyphicon glyphicon-align-justify pull-right" ng-click="toggle()" disabled></span>
@@ -9,7 +9,7 @@
 
             </div>
         </div>
-        <div ng-class="{true:'body_right_collapse',false:'body_right'}[coll]">
+        <div class="body_right" ng-class="{true:'body_right_collapse',false:''}[coll]">
             <div class="sky_main">
                 <div class="sky_main_head navbar navbar-default">
                     <span class="left_icon glyphicon glyphicon-align-justify" ng-click="toggle()"></span>

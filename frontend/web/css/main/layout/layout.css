@@ -73,29 +73,6 @@
     box-shadow: 1px -1px 10px 1px #262626;
 }
 
-
-@keyframes  collapse_left{
-    from{
-        width: 180px;
-    }to{
-        width: 40px;
-    }
-}
-
-.layout .body .body_left_collapse{
-    position: absolute;
-    height: 100%;
-    /*left: 0;*/
-    animation: collapse_left 0.1s both ease-in;
-    background-color: rgb(33, 144, 255);
-    z-index: 2;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    box-shadow: 1px -1px 10px 1px #262626;
-}
-
 .body_left_title{
     position: absolute;
     width: 100%;
@@ -114,6 +91,16 @@
     z-index: 1;
 }
 
+@keyframes collapse_rightback{
+    from{
+        left: 180px;
+        z-index: 1;
+    }to{
+        left: 0;
+        z-index: 3;
+     }
+}
+
 .layout .body .body_right{
     position: absolute;
     height: 100%;
@@ -121,13 +108,16 @@
     left: 180px;
     right: 0;
     z-index: 1;
+    transition: left 400ms ease;
 }
 
 @keyframes  collapse_right{
     from{
-        left: 180px;
+        left: 0;
+        z-index: 3;
     }to{
-        left: 40px;
+        left: 180px;
+        z-index: 1;
      }
 }
 
@@ -135,9 +125,8 @@
     position: absolute;
     height: 100%;
     padding: 0;
-    animation: collapse_right 0.1s both ease-in;
+    animation: collapse_right 0.2s both ease-in !important;
     right: 0;
-    z-index: 1;
 }
 
 /*.layout .body .body_right*/
@@ -208,8 +197,8 @@
     position: absolute;
     top: 15px;
     bottom: 15px;
-    left: 15px;
-    right: 15px;
+    left: 0;
+    right: 0;
     background-color: white;
     overflow: auto;
 }
@@ -268,15 +257,8 @@
 }
 
 @media (max-width: 992px) {
-    .layout .body .body_left{
-        width: 0;
-        display: none;
-    }
     .layout .body .body_right{
-        left: 0;
-    }
-    .layout .body .sky_main_body .sky_view {
-        left: 0;
+        animation: collapse_rightback 0.2s both ease-in;
     }
     .body_left_title .sky_disable{
         display: block;
@@ -291,9 +273,6 @@
     }
     .sky_other {
         display: none;
-    }
-    .layout .body .sky_main_body .sky_view {
-        right: 0;
     }
 }
 
