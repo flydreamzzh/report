@@ -12,6 +12,12 @@ define(['app','share','style','css!../../../../css/main/layout/layout'],function
             $scope.navColl = true;
         }
     });
+    app.controller('leftNavCtrl',function($scope,share,style){
+        angular.element('.left_nav a').on('click',function(){
+            style.remove('.body_right');
+        });
+    });
+
     app.controller('userLoginCtrl',function($scope){
         $scope.ngShow = function() {
             $scope.bgshow = true;
