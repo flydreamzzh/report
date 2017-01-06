@@ -1,0 +1,22 @@
+.userManager{
+    position: relative;
+    height: 100%;
+    height: 100%;
+    background-color: darkturquoise;
+}
+.user-chose{
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    background-color: saddlebrown;
+}
+
+.userInfo{
+    min-height: 150px;
+    background-color: lightsteelblue;
+}
+
+.users{
+    min-height: 150px;
+    background-color: seashell;
+}

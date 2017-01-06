@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/3.
  */
-define(['app'],function(app){
+define(['app','css!../../../../css/main/user/user'],function(app){
     app.controller('userCtrl',function($scope){
 
     });
