@@ -19,6 +19,8 @@ require.config({
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postService',
+        'share':'scripts/service/shareFactory',
+        'style':'scripts/service/styleFactory',
     },
     shim: {
         'angular': {exports: 'angular'},

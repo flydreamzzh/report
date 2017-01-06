@@ -1,4 +1,4 @@
-<div ng-controller="layoutCtrl" class="layout">
+<div data-ng-controller="layoutCtrl" class="layout">
     <div class="body">
         <div class="body_left">
             <div class="body_left_title">
@@ -8,27 +8,27 @@
 
             </div>
         </div>
-        <div class="body_right" ng-class="{true:'body_right_collapse',false:''}[coll]">
+        <div class="body_right" >
             <div class="sky_main">
                 <div class="sky_main_head navbar navbar-default">
                     <span class="left_icon glyphicon glyphicon-align-justify" ng-click="toggle()"></span>
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" ng-click="aa = !aa">
+                        <button type="button" class="navbar-toggle" ng-click="navColl = !navColl">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">TSKYLAKE</a>
+                        <a class="navbar-brand">TSKYLAKE</a>
                     </div>
-                    <div class="collapse navbar-collapse" uib-collapse="aa">
+                    <div class="collapse navbar-collapse" uib-collapse="navColl">
                         <ul class="nav navbar-nav">
                             <li><a>功能</a></li>
                             <li class="user_mes"><img src="/images/user.png"><a container="body" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal" data-template-url="view/main/user/userMes.html">张先生</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="sky_main_body" ng-click="coll = false;aa=true">
+                <div class="sky_main_body" ng-click="navClose()">
                     <div ui-view class="sky_view">
 
                     </div>

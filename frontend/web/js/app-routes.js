@@ -42,23 +42,23 @@ define(['app'],function (app) {
                 url: '/login',
                 templateUrl: 'view/login/login.html',
                 controllerUrl: 'scripts/controller/login/loginCtrl',
-                controller: 'loginCtrl',
+                //controller: 'loginCtrl',
             }).state('layout', {
                 //abstract: true,
                 url: '/layout',
                 templateUrl: 'view/main/layout/layout.html',
                 controllerUrl: 'scripts/controller/layout/layoutCtrl',
-                controller: 'layoutCtrl',
+                //controller: 'layoutCtrl',
             }).state('layout.home', {
                 url: '/home',
                 templateUrl: 'view/main/home/home.html',
                 controllerUrl: 'scripts/controller/home/homeCtrl',
-                controller: 'homeCtrl',
+                //controller: 'homeCtrl',
             }).state('layout.user',{
                 url: '/user',
                 templateUrl: 'view/main/user/user.html',
                 controllerUrl: 'scripts/controller/user/userCtrl',
-                controller: 'userCtrl',
+                //controller: 'userCtrl',
             });
     }]);
 });
