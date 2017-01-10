@@ -5,18 +5,85 @@
     background-color: darkturquoise;
 }
 .user-chose{
-    position: absolute;
-    bottom: 0;
-    height: 30px;
-    background-color: saddlebrown;
+    height: 120px;
+    background-color: seashell;
+    border-left: 1px solid silver;
+    z-index: 2;
 }
 
 .userInfo{
-    min-height: 150px;
-    background-color: lightsteelblue;
+    height: 120px;
+    background-color: white;
+    z-index: 2;
+    overflow: auto;
+}
+
+.userInfo .chose {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 30px;
+    cursor: pointer;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 10px;
+    color: black;
+    display: none;
+    background-color: white;
+    opacity: .6;
+}
+
+.userInfo>ul{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.userInfo>ul li{
+    list-style-type: none;
+    height: 25px;
+    margin: 5px 0;
+    color: silver;
+    cursor: pointer;
+    line-height: 25px;
+    letter-spacing: 5px;
+    text-align: left;
+    padding: 0 12px;
+    border-bottom: 1px solid white;
+    transition: text-align 400ms ease;
+}
+.userInfo>ul li:hover{
+    /*text-align: right;*/
 }
 
 .users{
-    min-height: 150px;
-    background-color: seashell;
+    position: absolute;
+    top: 120px;
+    bottom: 0;
+    background-color: saddlebrown;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .userInfo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 30px;
+        overflow: hidden;
+    }
+    .userInfo .chose {
+        display: block;
+    }
+    .userInfo>ul{
+        top: 30px;
+    }
+    .users{
+        bottom: 30px;
+    }
 }
