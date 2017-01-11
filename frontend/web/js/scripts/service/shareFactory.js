@@ -5,7 +5,8 @@ define(['app'],function(app){
     app.factory('share',function(){
         var param = {
             leftColl : true,
-            navColl : true
+            navColl : true,
+            showFun : true,
         };
         var factory = {};
         factory.get = function(name) {

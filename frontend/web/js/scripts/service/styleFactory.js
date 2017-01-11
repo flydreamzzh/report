@@ -10,6 +10,7 @@ define(['app','share'],function(app,share){
         var relevant = {
             '.body_right':'leftColl',
             '.navbar-collapse':'navColl',
+            '.userInfo':'showFun',
         }
         /**
          * 节点对应相关样式
@@ -18,6 +19,7 @@ define(['app','share'],function(app,share){
         var stable = {
             '.body_right':'body_right_collapse',
             '.sky_main_head .navbar-collapse':'in',
+            '.userInfo':'showFun',
         };
         var factory = {};
         factory.add = function(name) {
