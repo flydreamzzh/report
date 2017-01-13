@@ -1,0 +1,42 @@
+<div class="login">
+    <div class="login_title">
+        <div><img src="../../images/login-title.png"></div>
+        <div class="login_title_content">
+            Tskylake
+        </div>
+    </div>
+    <div class="login_body" ng-controller="loginCtrl">
+        <form class="form-horizontal" role="form">
+            <div class="form-group row">
+                <div class="col-xs-4">
+                    <label for="username" class="pull-right control-label">账号</label>
+                </div>
+                <div class="col-xs-6">
+                    <input class="form-control pull-left" placeholder="限长度5-15的数字、字母" id="username" name="username" type="text" required ng-model='user.username' ng-blur="checkuser()"/>
+                </div>
+                <div class="pull-left">
+                    <span class="control-label pull-left no-padding" ng-class="{0: '',1: 'green glyphicon glyphicon-ok',2: 'red glyphicon glyphicon-remove'}[matchuser]"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-4">
+                    <label for="password" class="pull-right control-label">密码</label>
+                </div>
+                <div class="col-xs-6">
+                    <input class="form-control pull-left" placeholder="密码" id="password" name="password" type="password" required ng-model='user.password' ng-blur="checkpass()"/>
+                </div>
+                <div class="pull-left">
+                    <span class="control-label pull-left no-padding" ng-class="{0: '',1: 'green glyphicon glyphicon-ok',2: 'red glyphicon glyphicon-remove'}[matchpass]"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-xs-offset-1">
+                    <input type="button" ng-click="login()" class="col-xs-10 btn btn-primary btn-md" ng-class="{false:'',true:'disabled'}[matchpass!=1||matchuser!=1]" value="登&nbsp;&nbsp;&nbsp;&nbsp;录">
+                </div>
+            </div>
+        </form>
+        <div class="col-xs-11">
+            <a href="#" class="pull-right" style="margin-bottom: 10px;font-family: STSong">忘记密码？</a>
+        </div>
+    </div>
+</div>

@@ -2,15 +2,14 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use common\models\LoginForm;
+use backend\controllers\base\BackendController;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BackendController
 {
     /**
      * @inheritdoc
@@ -18,20 +17,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -60,39 +45,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->renderContent(null);
     }
 
     /**
-     * Login action.
-     *
-     * @return string
+     * 用户登录
+     * @return array
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+        $data = $this->post();
+        $loginForm = new LoginForm();
+        $loginForm->username = $data['username'];
+        $loginForm->password = $data['password'];
+        if($loginForm->login()) {
+            return $this->out([true]);
+        }else {
+            return $this->out([false,'账号不存在或密码错误']);
         }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
     }
 }

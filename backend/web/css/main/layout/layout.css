@@ -1,0 +1,263 @@
+.layout{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.layout .sky_icon{
+    font-size: 20px;
+    color: dodgerblue;
+    margin-top: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.layout .sky_icon:hover{
+    color: black;
+}
+
+.layout .sky_disable{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.layout .body{
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    padding: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.left_icon{
+    display: none;
+    float: left;
+    width: 30px;
+    height: 100%;
+    text-align: right;
+    line-height: 47px;
+    color: dodgerblue;
+    font-size: 16px;
+    cursor: pointer;
+}
+.left_icon:hover {
+    opacity: 0.8;
+}
+
+.layout .foot{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    background-color: white;
+    z-index: 2;
+    border-top: 1px silver solid;
+    /*box-shadow: 1px 1px 10px 1px #262626;*/
+}
+
+.layout .body .body_left{
+    position: absolute;
+    height: 100%;
+    width: 180px;
+    background-color: rgb(33, 144, 255);
+    z-index: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-right: 1px silver solid;
+    /*box-shadow: 1px -1px 10px 1px #262626;*/
+}
+
+.body_left_title{
+    position: absolute;
+    width: 100%;
+    height: 51px;
+    border-bottom: 1px solid silver;
+    background-color: ghostwhite;
+    z-index: 2;
+}
+.left_nav{
+    position: absolute;
+    top: 51px;
+    bottom: 0;
+    width: 100%;
+    background-color: #fbfbfb;
+    z-index: 1;
+}
+
+.layout .body .body_right{
+    position: absolute;
+    height: 100%;
+    padding: 0;
+    left: 180px;
+    right: 0;
+    z-index: 1;
+    transition: left 400ms ease;
+}
+
+.layout .body .body_right_collapse{
+    position: absolute;
+    height: 100%;
+    padding: 0;
+    /*animation: collapse_right 0.2s both ease-in !important;*/
+    left: 180px !important;
+    right: 0;
+}
+
+/*.layout .body .body_right*/
+.sky_main {
+    position: absolute;
+    left: 0;
+    right: 150px;
+    height: 100%;
+}
+/**********************  sky_main_head  **********************/
+.sky_main_head {
+    position: relative;
+    width: 100%;
+    background-color: white;
+    /*box-shadow: 0px 1px 10px 1px #484848;*/
+    /*border-bottom: 1px silver solid;*/
+    z-index: 2;
+}
+.sky_main .navbar-default .navbar-nav>li>a{
+    color: #9a9a9a;
+}
+.sky_main .navbar-default .navbar-nav>li>a:hover{
+    color: #9a9a9a;
+}
+.sky_main .navbar-default .navbar-nav>li>a:visited{
+    color: #9a9a9a;
+}
+.sky_main .navbar-default .navbar-nav>li>a:link{
+    color: #9a9a9a;
+}
+.sky_main .navbar{
+    border:0;
+    border-bottom: 1px solid silver;
+    border-radius: 0;
+}
+.sky_main_head .navbar-collapse ul{
+    position: relative;
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+.sky_main_head .navbar-collapse ul li{
+    position: relative;
+    margin-top: 5px;
+    width: auto;
+    white-space: nowrap;
+    text-align: right;
+}
+.sky_main_head .navbar-collapse.in {
+    overflow-y: hidden;
+}
+.sky_main_head .user_mes{
+    float: left;
+}
+.sky_main_head .user_mes a{
+    float: left;
+}
+.sky_main_head .user_mes img{
+    width: 30px;
+    margin: 5px;
+    float: left;
+}
+/********************************************/
+.sky_main_body {
+    position: absolute;
+    width: 100%;
+    top: 50px;
+    bottom: 0;
+    background-color: white;
+    z-index: 1;
+}
+
+.sky_main_body .sky_view{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    overflow: auto;
+}
+
+.sky_other {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    right: 0;
+    z-index: 2;
+    border-left: 1px silver solid;
+    /*box-shadow: -1px 0px 10px 1px #484848;*/
+}
+
+.sky_other_user {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    background-color: #aaaaaa;
+}
+
+.sky_other_message {
+    position: absolute;
+    width: 100%;
+    top: 150px;
+    bottom: 0;
+    background-color: white;
+}
+
+.layout .layout_tool{
+    position: absolute;
+    top: 50%;
+    margin-top: -100px;
+    left: 30px;
+    width: 150px;
+    height: 200px;
+    background-color: darkmagenta;
+    z-index: 1000;
+    opacity: 0.5;
+}
+
+@media (max-height: 600px) {
+    .layout .body{
+        height: 100%;
+    }
+    .layout .foot{
+        display: none;
+    }
+}
+
+@media (max-height: 400px) {
+
+}
+
+@media (max-width: 992px) {
+    .layout .body .body_right{
+        width: 100%;
+        left: 0;
+    }
+    .body_left_title .sky_disable{
+        display: block;
+    }
+    .left_icon{
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .sky_main {
+        right: 0;
+    }
+    .sky_other {
+        display: none;
+    }
+}
