@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/3.
  */
-define(['app','style','css!../../../../css/main/user/user'],function(app,style){
+define(['app','ngHandsontable','style','css!../../../../css/main/user/user'],function(app,style){
     app.controller('userCtrl',function($scope,style){
         $scope.showFun = function() {
             style.toggle('.userInfo');

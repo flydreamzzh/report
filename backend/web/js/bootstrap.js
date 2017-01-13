@@ -16,6 +16,8 @@ require.config({
         'mobile-angular-ui-gestures':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.gestures.min',
         'mobile-angular-ui.components':'lib/mobile-angular-ui-1.2.0/dist/js/mobile-angular-ui.components.min',
         'ui-bootstrap':'lib/ui-bootstrap/ui-bootstrap-tpls-2.3.1.min',
+        'handsontable':'lib/handsontable/dist/handsontable.full.min',
+        'ngHandsontable':'lib/ngHandsontable/dist/ngHandsontable.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postService',
@@ -31,6 +33,7 @@ require.config({
         'angular-strap-tpl': ['angular','angular-strap'],
         'mobile-angular-ui':['angular','mobile-angular-ui-core','mobile-angular-ui-gestures','mobile-angular-ui.components'],
         'app': ['angular'],
+        'ngHandsontable':['handsontable','css!../../../js/lib/handsontable/dist/handsontable.full.min.css']
     },
     map: {
         '*': {
