@@ -1,11 +1,11 @@
 <?php
 
-namespace common\models\query\log;
+namespace backend\modules\log\models\query;
 
 /**
- * This is the ActiveQuery class for [[\common\models\Log]].
+ * This is the ActiveQuery class for [[\backend\modules\log\models\Log]].
  *
- * @see \common\models\Log
+ * @see \backend\modules\log\models\Log
  */
 class LogQuery extends \yii\db\ActiveQuery
 {
@@ -16,7 +16,7 @@ class LogQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\Log[]|array
+     * @return \backend\modules\log\models\Log[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class LogQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \common\models\Log|array|null
+     * @return \backend\modules\log\models\Log|array|null
      */
     public function one($db = null)
     {

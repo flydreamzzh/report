@@ -9,5 +9,17 @@ use common\base\interfaces\ContextInterface;
  */
 class BaseController extends Controller implements ContextInterface
 {
-    
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \yii\base\Component::behaviors()
+     */
+    public function behaviors()
+    {
+        return [
+            'logging' => [
+                'class' => '\common\behavior\LoggingBehavior'
+            ],
+        ];
+    }
 }

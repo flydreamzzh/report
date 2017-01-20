@@ -11,7 +11,11 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'log' => [
+            'class' => 'backend\modules\log\LogModule',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -26,13 +30,22 @@ return [
             'name' => 'advanced-backend',
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => [
+                        'error',
+                        'warning'
+                    ]
                 ],
-            ],
+                [
+                    'class' => 'yii\log\DbTarget', // 使用数据库记录日志
+                    'levels' => [
+                        'error',
+                        'warning'
+                    ]
+                ]
+            ]
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
