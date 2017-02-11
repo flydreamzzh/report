@@ -63,6 +63,12 @@ trait TreeTrait
      * @var number 
      */
     private $minLeft = 0;
+    
+    /**
+     * 节点子类对象树
+     * @var array
+     */
+    public $tree_children;
 
     /**
      * 初始化类数据库字段信息
@@ -481,9 +487,24 @@ trait TreeTrait
         return $directlyChildren;
     }
     
-    public function tree_children()
+    /**
+     * 获取当前节点对象的所有子节点树
+     * @param ActiveRecord $model 需要查询的节点(不填就是当前对象)
+     * @return \common\lib\TreeTrait|ActiveRecord
+     */
+    public function tree_children($model = NULL)
     {
-    
+        $model = $model ? $model : $this;
+        $child= $model->tree_directlyChildren();
+        if ($child) {
+            $model->tree_children = $child;
+        }
+        foreach ($child as $node) {
+            if (! $node->tree_isLastNode()) {
+                $node->tree_children = $node->tree_children();
+            }
+        }
+        return $model;
     }
     
     public function tree_horMove()
@@ -583,7 +604,7 @@ trait TreeTrait
      */
     public function tree_isLastNode($model = NULL)
     {
-        return $this->tree_num_children($model) ? true : false;
+        return $this->tree_num_children($model) ? false : true;
     }
     
 }
