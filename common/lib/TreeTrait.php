@@ -400,6 +400,23 @@ trait TreeTrait
         return false;
     }
     
+    public function tree_TopNodes()
+    {
+        $lr = $this->tree_getMinLeftAndMaxRight();
+        $models = $this->find()
+            ->where(['>', $this->left, min($lr)-1])
+            ->andWhere(['<', $this->right, max($lr)+1])
+            ->andWhere($this->preCondition)
+            ->orderBy([$this->left => SORT_ASC])
+            ->all();
+        foreach ($models as $node) {
+            if (! $node->tree_directlyParent()) {
+                $directlyChildren[] = $node;
+            }
+        }
+        return $directlyChildren;
+    }
+    
     /**
      * 获取当前对象的直系父节点
      * @param ActiveRecord $model 要查询节点的对象(不填就是当前对象)
@@ -411,6 +428,7 @@ trait TreeTrait
         $parent = $this->find()
             ->where(['<', $this->left, min($lr)])
             ->andWhere(['>', $this->right, max($lr)])
+            ->andWhere($this->preCondition)
             ->orderBy([$this->left => SORT_DESC])
             ->one();
         return $parent ? $parent : null;
@@ -425,7 +443,11 @@ trait TreeTrait
     {
         $lr = $this->tree_getLeftAndRight($model);
         $parentModel = $this->tree_directlyParent($model);
-        $models = $parentModel->tree_directlyChildren();
+        if (! $parentModel) {
+            $models = $this->tree_TopNodes($model);
+        } else {
+            $models = $parentModel->tree_directlyChildren();
+        }
         foreach ($models as $key => $node) {
             $blr = $this->tree_getLeftAndRight($node);
             if(min($lr) == min($blr) && max($lr) == max($blr)) {
@@ -448,6 +470,7 @@ trait TreeTrait
         $models = $this->find()
             ->where(['>', $this->left, min($lr)])
             ->andWhere(['<', $this->right, max($lr)])
+            ->andWhere($this->preCondition)
             ->orderBy([$this->left => SORT_ASC])
             ->all();
         foreach ($models as $node) {
