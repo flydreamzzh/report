@@ -325,14 +325,79 @@ trait TreeTrait
         
     }
     
+    /**
+     * 同父同级节点进行    上移
+     * @param ActiveRecord $model 被操作的对象（不填就是当前对象）
+     * @return boolean
+     */
     public function tree_moveUp($model = NULL)
     {
-        
+        $lr = $this->tree_getLeftAndRight($model);
+        $brother = $this->tree_brother($model);
+        $replace = null;
+        foreach ($brother as $node) {
+            $blr = $node->tree_getLeftAndRight();
+            if (min($lr) <= min($blr))
+                break;
+            /** @var ActiveRecord $replace */
+            $replace = $node;
+        }
+        return $this->tree_exchange($replace);
     }
     
+    /**
+     * 同父同级节点进行    下移
+     * @param ActiveRecord $model 被操作的对象（不填就是当前对象）
+     */
     public function tree_moveDown($model = NULL)
     {
+        $lr = $this->tree_getLeftAndRight($model);
+        $brother = $this->tree_brother($model);
+        $replace = null;
+        foreach ($brother as $node) {
+            $blr = $node->tree_getLeftAndRight();
+            if (min($lr) < min($blr)) {
+                /** @var ActiveRecord $replace */
+                $replace = $node;
+                break;
+            }
+        }
+        return $this->tree_exchange($replace);
+    }
     
+    /**
+     * 节点之间交换位置
+     * @param ActiveRecord $exchangeModel 将被交换位置的节点
+     * @param ActiveRecord $model 被操作的对象（不填就是当前对象）
+     * @return boolean
+     */
+    public function tree_exchange($exchangeModel,$model = NULL)
+    {
+        $lr = $this->tree_getLeftAndRight($model);
+        if ($exchangeModel) {
+            /** @var ActiveRecord $modelCur */
+            $modelCur = $model ? $model : $this;
+            $tran = Yii::$app->db->beginTransaction();
+            try {
+                $rlr = $exchangeModel->tree_getLeftAndRight();
+                $modelCur->{$this->left} = min($rlr);
+                $modelCur->{$this->right} = max($rlr);
+                if($modelCur->update()) {
+                    $exchangeModel->{$this->left} = min($lr);
+                    $exchangeModel->{$this->right} = max($lr);
+                    if ($exchangeModel->update()) {
+                        $tran->commit();
+                        return true;
+                    }
+                }
+                $tran->rollBack();
+                return false;
+            } catch (Exception $e) {
+                $tran->rollBack();
+                return false;
+            }
+        }
+        return false;
     }
     
     /**
