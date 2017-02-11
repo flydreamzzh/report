@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Exception;
 use yii\db\ActiveRecord;
 use yii\db\Query;
+use yii\helpers\ArrayHelper;
 
 /**
  * 建立带左右值的无限归类树
@@ -127,16 +128,24 @@ trait TreeTrait
     public function tree_getLeftAndRight($model = NULL)
     {
         if (! $model) {
-            $left = $this->{$this->left};
-            $right = $this->{$this->right};
+            if (! $this->isNewRecord) {
+                $left = $this->{$this->left};
+                $right = $this->{$this->right};
+            } else {
+                throw new Exception("查询对象必须在已存在");  
+            }
         } else {
-            $left = $model->{$this->left};
-            $right = $model->{$this->right};
+            if (! $model->isNewRecord) {
+                $left = $model->{$this->left};
+                $right = $model->{$this->right};
+            } else {
+                throw new Exception("查询对象必须在已存在");  
+            }
         }
-        if(is_numeric($left) && is_numeric($right)) {
+        if (is_numeric($left) && is_numeric($right) && $left != $right) {
             return [$left, $right];
         } else {
-            throw new Exception("当前对象缺失左右值数据");
+            throw new Exception("当前对象左右值数据异常");
         }
     }
     
@@ -262,29 +271,50 @@ trait TreeTrait
         return $len;
     }
     
-    
+    /**
+     * 将当前节点移动的某节点下
+     * @param ActiveRecord $parent 父节点
+     * @return boolean
+     */
     public function tree_moveNode($parent)
     {
+        if ($this->tree_isBeInclude($parent))
+            return false;
         $transaction = Yii::$app->db->beginTransaction();
         try {
             $lr = $this->tree_getLeftAndRight();
             $plr = $this->tree_getLeftAndRight($parent);
             $dif = max($lr) - min($lr) + 1; //当前对象的 右值 - 左值
             $pdif = min($lr) - max($plr); //当前对象的 左值 - 准父类的 右值
-            $models = $this->find()
-                ->select($this->primaryKey()[0])
+            /** @var array $models 要移动更新的行主键 */
+            $models = $this->find()->select(['id'=>$this->primaryKey()[0]])
                 ->where(['>=', $this->left, min($lr)])
                 ->andWhere(['<=', $this->right, max($lr)])
                 ->andWhere($this->preCondition)
-                ->asArray()
-                ->all();
-            $moveNodes = $this->updateAllCounters([$this->left => -($this->left), $this->right => -($this->right)], [$this->primaryKey()[0] => $models]);
-            var_dump($moveNodes);exit();
-//             $otherlefts = $this->updateAllCounters([$this->left => ($this->left + $dif)], ['>', $this->left, max($plr)]);
-//             $otherrights = $this->updateAllCounters([$this->right => ($this->right + $dif)], ['>=', $this->right, max($plr)]);
-//             $this->updateAllCounters([$this->left => (-$this->left - $pdif), $this->right => (-$this->right - $pdif)], [$this->primaryKey()[0] => $models]);
-            $transaction->commit();
-            return true;
+                ->asArray()->all();
+            $ids = ((new ArrayHelper())->getColumn($models,'id'));
+            /** @var array $leftmodels 要更新左值的行主键（未去除要移动的行主键）*/
+            $leftmodels = $this->find()->select(['id'=>$this->primaryKey()[0]])
+                ->where(['>', $this->left, max($plr)])
+                ->andWhere($this->preCondition)
+                ->asArray()->all();
+            $leftIds = ((new ArrayHelper())->getColumn($leftmodels,'id'));
+            /** @var array $rightmodels 要更新右值的行主键（未去除要移动的行主键）*/
+            $rightmodels = $this->find()->select(['id'=>$this->primaryKey()[0]])
+                ->where(['>=', $this->right, max($plr)])
+                ->andWhere($this->preCondition)
+                ->asArray()->all();
+            $rightIds = ((new ArrayHelper())->getColumn($rightmodels,'id'));
+            
+            $updatelefts = $this->updateAllCounters([$this->left => ($this->left + $dif)], [$this->primaryKey()[0] => array_diff($leftIds, $ids)]);
+            $updaterights = $this->updateAllCounters([$this->right => ($this->right + $dif)], [$this->primaryKey()[0] => array_diff($rightIds, $ids)]);
+            $updatemodels = $this->updateAllCounters([$this->left => ($this->left - $pdif), $this->right => ($this->right - $pdif)], [$this->primaryKey()[0] => $ids]);
+            if($updatelefts == count(array_diff($leftIds, $ids)) && $updaterights == count(array_diff($rightIds, $ids)) && $updatemodels == count($ids)) {
+                $transaction->commit();
+                return true;
+            }
+            $transaction->rollBack();
+            return false;
         } catch (Exception $e) {
             $transaction->rollBack();
             return false;
@@ -327,6 +357,36 @@ trait TreeTrait
     
     }
 
+    /**
+     * 判断当前对象是否     包含      某个对象
+     * @param ActiveRecord $model
+     * @return boolean
+     */
+    public function tree_isInclude($model)
+    {
+        $lr = $this->tree_getLeftAndRight();
+        $clr = $this->tree_getLeftAndRight($model);
+        if (min($lr) < min($clr) && max($lr) > max($clr)) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * 判断当前对象是否     被包含      某个对象
+     * @param ActiveRecord $parentModel
+     * @return boolean
+     */
+    public function tree_isBeInclude($parentModel)
+    {
+        $lr = $this->tree_getLeftAndRight();
+        $plr = $this->tree_getLeftAndRight($parentModel);
+        if (min($lr) > min($plr) && max($lr) < max($plr)) {
+            return true;
+        }
+        return false;
+    }
+    
     /**
      *  判断当前节点是否顶级节点
      * @return boolean 
