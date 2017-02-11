@@ -122,6 +122,7 @@ trait TreeTrait
      * Example：
      * return [0,10];
      * 获取当前对象的左右值数组
+     * @param ActiveRecord $model 需要查询的节点对象(不填就是当前对象)
      * @return array
      * @throws Exception
      */
@@ -239,11 +240,12 @@ trait TreeTrait
     
     /**
      * 移除当前节点以及其子节点
+     * @param ActiveRecord $model 要处理的节点对象(不填就是当前对象)
      * @return integer 返回受影响的行数
      */
-    public function tree_remove()
+    public function tree_remove($model = NULL)
     {
-        $lr = $this->tree_getLeftAndRight();
+        $lr = $this->tree_getLeftAndRight($model);
         $models = $this->find()
             ->where(['>=', $this->left, min($lr)])
             ->andWhere(['<=', $this->right, max($lr)])
@@ -256,11 +258,12 @@ trait TreeTrait
     
     /**
      * 移除当前节点的所有子节点点
+     * @param ActiveRecord $model 要处理的节点对象(不填就是当前对象)
      * @return integer 返回受影响的行数
      */
-    public function tree_removeChildren()
+    public function tree_removeChildren($model = NULL)
     {
-        $lr = $this->tree_getLeftAndRight();
+        $lr = $this->tree_getLeftAndRight($model);
         $models = $this->find()
             ->where(['>', $this->left, min($lr)])
             ->andWhere(['<', $this->right, max($lr)])
@@ -322,24 +325,72 @@ trait TreeTrait
         
     }
     
-    public function tree_moveUp()
+    public function tree_moveUp($model = NULL)
+    {
+        
+    }
+    
+    public function tree_moveDown($model = NULL)
     {
     
     }
     
-    public function tree_moveDown()
+    /**
+     * 获取当前对象的直系父节点
+     * @param ActiveRecord $model 要查询节点的对象(不填就是当前对象)
+     * @return ActiveRecord|null
+     */
+    public function tree_directlyParent($model = NULL)
     {
-    
+        $lr = $this->tree_getLeftAndRight($model);
+        $parent = $this->find()
+            ->where(['<', $this->left, min($lr)])
+            ->andWhere(['>', $this->right, max($lr)])
+            ->orderBy([$this->left => SORT_DESC])
+            ->one();
+        return $parent ? $parent : null;
     }
     
-    public function tree_parent()
+    /**
+     * 获取当前对象的同级（兄弟）节点
+     * @param ActiveRecord $model 需要查询的节点对象(不填就是当前对象)
+     * @return [ActiveRecord]
+     */
+    public function tree_brother($model = NULL)
     {
-    
+        $lr = $this->tree_getLeftAndRight($model);
+        $parentModel = $this->tree_directlyParent($model);
+        $models = $parentModel->tree_directlyChildren();
+        foreach ($models as $key => $node) {
+            $blr = $this->tree_getLeftAndRight($node);
+            if(min($lr) == min($blr) && max($lr) == max($blr)) {
+                unset($models[$key]);
+                break;
+            }
+        }
+        return $models;
     }
     
-    public function tree_directlyChildren()
+    /**
+     * 获取当前对象的直系子节点
+     * @param ActiveRecord $model 需要查询的节点对象(不填就是当前对象)
+     * @return [ActiveRecord]
+     */
+    public function tree_directlyChildren($model = NULL)
     {
-    
+        $directlyChildren = [];
+        $lr = $this->tree_getLeftAndRight($model);
+        $models = $this->find()
+            ->where(['>', $this->left, min($lr)])
+            ->andWhere(['<', $this->right, max($lr)])
+            ->orderBy([$this->left => SORT_ASC])
+            ->all();
+        foreach ($models as $node) {
+            if ($node->tree_isDirectlyParent($this)) {
+                $directlyChildren[] = $node;
+            }
+        }
+        return $directlyChildren;
     }
     
     public function tree_children()
@@ -388,12 +439,31 @@ trait TreeTrait
     }
     
     /**
+     * 判断当前节点的父节点是否为选定的节点
+     * @param ActiveRecord $parentModel 父节点对象
+     * @param ActiveRecord $model 需要判断的节点(不填就是当前对象)
+     * @return boolean
+     */
+    public function tree_isDirectlyParent($parentModel, $model = NULL)
+    {
+        $pModel = $this->tree_directlyParent($model);
+        if ($pModel) {
+            $id = $pModel->{$this->primaryKey()[0]};
+            $pid = $parentModel->{$this->primaryKey()[0]};
+            return $id == $pid;
+        }
+        return false;
+    }
+    
+    
+    /**
      *  判断当前节点是否顶级节点
+     * @param ActiveRecord $model 要查询的节点对象(不填就是当前对象)
      * @return boolean 
      */
-    public function tree_isTopNode()
+    public function tree_isTopNode($model = NULL)
     {
-        $lr = $this->tree_getLeftAndRight();
+        $lr = $this->tree_getLeftAndRight($model);
         $len = (new Query())->where(['<', $this->left, min($lr)])
             ->andWhere(['>', $this->right, max($lr)])
             ->andWhere($this->preCondition)
@@ -404,11 +474,12 @@ trait TreeTrait
     
     /**
      * 当前节点的子节点数
+     * @param ActiveRecord $model 要查询的节点对象(不填就是当前对象)
      * @return integer 返回子节点数
      */
-    public function tree_num_children()
+    public function tree_num_children($model = NULL)
     {
-        $lr = $this->tree_getLeftAndRight();
+        $lr = $this->tree_getLeftAndRight($model);
         $len = (new Query())->where(['>', $this->left, min($lr)])
             ->andWhere(['<', $this->right, max($lr)])
             ->andWhere($this->preCondition)
@@ -419,11 +490,12 @@ trait TreeTrait
     
     /**
      * 判断当前节点是否最后一个节点
+     * @param ActiveRecord $model 要查询的节点对象(不填就是当前对象)
      * @return boolean
      */
-    public function tree_isLastNode()
+    public function tree_isLastNode($model = NULL)
     {
-        return $this->tree_num_children() ? true : false;
+        return $this->tree_num_children($model) ? true : false;
     }
     
 }
