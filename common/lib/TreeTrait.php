@@ -66,16 +66,10 @@ trait TreeTrait
     public function __construct()
     {
         $lr = $this->setLeftAndRightColumn();
-        $grade = $this->setGradeColumn();
         $preCondition = $this->preCondition();
         if (is_array($lr) && count($lr) == 2) {
             $this->left = min($lr);
             $this->right = max($lr);
-            if (is_string($grade) && ! is_numeric($grade)) {
-                $this->grade = $grade;
-            } else {
-                throw new Exception("无限分类树等级字段名称配置失败");
-            }
         } else {
             throw new Exception("无限分类树左右值字段名称配置失败");
         }
