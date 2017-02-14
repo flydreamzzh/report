@@ -15,10 +15,6 @@ use yii\helpers\ArrayHelper;
  *      {
  *          return ["lft", "rgt"];
  *      }
- *      public function setGradeColumn()
- *      {
- *          return "grade";
- *      }
  *      public function preCondition()
  *      {
  *          return ['<','grade',3];
@@ -44,13 +40,6 @@ trait TreeTrait
      */
     private $right;
 
-    /**
-     * 等级字段名
-     * 
-     * @var string
-     */
-    private $grade;
-    
     /**
      * 前置查询条件
      *
@@ -104,15 +93,6 @@ trait TreeTrait
      */
     abstract public function setLeftAndRightColumn();
 
-    /**
-     * example：
-     * return "grade";
-     * 设置数据表等级字段名
-     * 
-     * @return string
-     */
-    abstract public function setGradeColumn();
-    
     /**
      * example：Yii2 AR模型的查询条件格式
      * return ['<','grade',3];
@@ -491,30 +471,34 @@ trait TreeTrait
      * 获取当前节点对象的所有子节点树
      * @param ActiveRecord $model 需要查询的节点(不填就是当前对象)
      * @return \common\lib\TreeTrait|ActiveRecord
+     * 返回信息中使用$model->tree_children即可
      */
     public function tree_children($model = NULL)
     {
         $model = $model ? $model : $this;
-        $child= $model->tree_directlyChildren();
+        $child = $model->tree_directlyChildren();
         if ($child) {
             $model->tree_children = $child;
         }
         foreach ($child as $node) {
             if (! $node->tree_isLastNode()) {
-                $node->tree_children = $node->tree_children();
+                $node->tree_children();
             }
         }
         return $model;
     }
     
-    public function tree_horMove()
-    {
-    
-    }
-    
+    /**
+     * 获取整棵树
+     * @return [ActiveRecord]
+     */
     public function tree_list()
     {
-    
+        $topNodes = $this->tree_TopNodes();
+        foreach ($topNodes as $node) {
+            $node->tree_children();
+        }
+        return $topNodes;
     }
 
     /**

@@ -28,17 +28,17 @@ class TestController extends BackendController
     
     public function actionIndex()
     {
-        $model = Menu::findOne(['menu_id'=>'MENU0009']);
-        $parentModel = Menu::findOne(['menu_id'=>'MENU0006']);
+        $model = Menu::findOne(['menu_id'=>'MENU0005']);
+        $parentModel = Menu::findOne(['menu_id'=>'MENU0003']);
 //         var_dump($model->tree_getMinLeftAndMaxRight());
-//         $model->updateAllCounters();   
+//         $model->update();   
 
         $newmodel = new Menu();
         $newmodel->menu_id = "0006";
         $newmodel->menu_name = "测试1";
         $newmodel->menu_url = '0001';
-        $b = $model->tree_moveNode($parentModel);
-        var_dump($b);exit();
+        $b = $model->tree_list();
+        print_r($b);exit();
     }
     
 }

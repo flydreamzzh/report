@@ -69,11 +69,6 @@ class Menu extends \yii\db\ActiveRecord
         return ["lft", "rgt"];
     }
 
-    public function setGradeColumn()
-    {
-        return "grade";
-    }
-    
     /**
      * @inheritdoc
      * @return \common\models\query\MenuQuery the active query used by this AR class.
