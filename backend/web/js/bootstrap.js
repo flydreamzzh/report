@@ -21,7 +21,7 @@ require.config({
         'ngHandsontable':'lib/ngHandsontable/dist/ngHandsontable.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
-        'post':'scripts/service/postService',
+        'post':'scripts/service/postFactory',
         'share':'scripts/service/shareFactory',
         'style':'scripts/service/styleFactory',
         /**********************  directive **************************/

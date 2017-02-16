@@ -37,8 +37,8 @@ class TestController extends BackendController
         $newmodel->menu_id = "0006";
         $newmodel->menu_name = "测试1";
         $newmodel->menu_url = '0001';
-        $b = $model->tree_list();
-        print_r($b);exit();
+        $b = (new Menu())->find()->stateMenu();
+        return json_encode($b);exit();
     }
     
 }

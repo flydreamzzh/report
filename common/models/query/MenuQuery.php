@@ -31,4 +31,10 @@ class MenuQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+    
+    public function stateMenu()
+    {
+        $menus = \common\models\Menu::find()->asArray()->all();
+        return $menus;
+    }
 }
