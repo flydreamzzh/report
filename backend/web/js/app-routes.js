@@ -36,7 +36,7 @@ define(['app'],function (app) {
         $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             method: 'POST',
-            url: '/test/index',
+            url: '/menu/statemenu',
             async: false,
         }).success(function(data,header,config,status){
             angular.forEach(data,function(value, key){

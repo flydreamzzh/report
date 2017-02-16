@@ -32,9 +32,14 @@ class MenuQuery extends \yii\db\ActiveQuery
         return parent::one($db);
     }
     
+    /**
+     * 为angularJs提供节点路由信息
+     * @return array
+     */
     public function stateMenu()
     {
-        $menus = \common\models\Menu::find()->asArray()->all();
+        $menu = new \common\models\Menu();
+        $menus = $menu->find()->where($menu->preCondition())->asArray()->all();
         return $menus;
     }
 }
