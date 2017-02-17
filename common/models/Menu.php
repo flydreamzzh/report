@@ -26,9 +26,7 @@ use common\lib\TreeTrait;
  */
 class Menu extends \yii\db\ActiveRecord
 {
-    use TreeTrait{ 
-         TreeTrait::__construct as private traitConstructor; 
-    }
+    use TreeTrait;
     /**
      * @inheritdoc
      */

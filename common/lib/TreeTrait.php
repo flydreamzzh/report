@@ -65,6 +65,7 @@ trait TreeTrait
      */
     public function __construct()
     {
+        parent::__construct();
         $lr = $this->setLeftAndRightColumn();
         $preCondition = $this->preCondition();
         if (is_array($lr) && count($lr) == 2) {
