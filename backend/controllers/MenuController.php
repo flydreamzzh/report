@@ -29,4 +29,12 @@ class MenuController extends BackendController
     {
         return json_encode((new Menu())->find()->stateMenu());
     }
+    
+    /**
+     * 获取节点树信息
+     */
+    public function actionMenu()
+    {
+        return json_encode((new Menu())->find()->menus());
+    }
 }

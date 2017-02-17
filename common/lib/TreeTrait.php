@@ -380,6 +380,10 @@ trait TreeTrait
         return false;
     }
     
+    /**
+     * 获取顶级节点
+     * @return ActiveRecord[]|[]
+     */
     public function tree_TopNodes()
     {
         $lr = $this->tree_getMinLeftAndMaxRight();
@@ -583,6 +587,28 @@ trait TreeTrait
     public function tree_isLastNode($model = NULL)
     {
         return $this->tree_num_children($model) ? false : true;
+    }
+    
+    /**
+     * 将查找的数据换行成数组
+     * @param ActiveRecord[] $model
+     * @return array
+     */
+    public function tree_array($models)
+    {
+        if (! $models)
+            return $models;
+        if (is_array($models)) {
+            foreach ($models as $key => $model) {
+                $models[$key] = $this->tree_array($model);
+            }
+        } else {
+            $children = $models->tree_children ? $this->tree_array($models->tree_children) : [];
+            $models = $models->toArray();
+            if($children)
+                $models['tree_children'] = $children;
+        }
+        return $models;
     }
     
 }

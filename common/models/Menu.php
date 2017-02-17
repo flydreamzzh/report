@@ -19,6 +19,7 @@ use common\lib\TreeTrait;
  * @property string $controller
  * @property string $controllerUrl
  * @property string $views
+ * @property string $is_end
  * @property integer $lft
  * @property integer $rgt
  * @property integer $ver
@@ -42,7 +43,7 @@ class Menu extends \yii\db\ActiveRecord
         return [
             [['menu_id', 'menu_name', 'menu_url', 'state', 'lft', 'rgt'], 'required'],
             [['is_allow_children', 'lft', 'rgt', 'ver'], 'integer'],
-            [['abstract'], 'string'],
+            [['abstract', 'is_end'], 'string'],
             [['menu_id'], 'string', 'max' => 40],
             [['menu_name'], 'string', 'max' => 45],
             [['menu_url', 'state', 'templateUrl', 'controller', 'controllerUrl', 'views'], 'string', 'max' => 255],
@@ -67,12 +68,17 @@ class Menu extends \yii\db\ActiveRecord
             'controller' => Yii::t('app', '页面JS控制器名称'),
             'controllerUrl' => Yii::t('app', '页面JS控制器路径'),
             'views' => Yii::t('app', '视图展示的配置'),
+            'is_end' => Yii::t('app', '是否结束'),
             'lft' => Yii::t('app', '左值'),
             'rgt' => Yii::t('app', '右值'),
             'ver' => Yii::t('app', '版本'),
         ];
     }
 
+    /**
+     * 设置左右值字段名称
+     * @return string[]
+     */
     public function setLeftAndRightColumn()
     {
         return ["lft", "rgt"];
