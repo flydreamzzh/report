@@ -13,9 +13,7 @@ define(['app','share','ngHandsontable','listMenu','style','css!../../../../css/m
         }
     });
     app.controller('leftNavCtrl',function($scope,share,style){
-        angular.element('.left_nav a').on('click',function(){
-            style.remove('.body_right');
-        });
+
     });
 
     app.controller('userLoginCtrl',function($scope){
