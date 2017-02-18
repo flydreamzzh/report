@@ -19,6 +19,7 @@ require.config({
         'handsontable':'lib/handsontable/dist/defineHandsontable',
         'handsontable-full':'lib/handsontable/dist/handsontable.full.min',
         'ngHandsontable':'lib/ngHandsontable/dist/ngHandsontable.min',
+        'angular-tree':'lib/angular-tree/angular-tree-control',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postFactory',
@@ -36,7 +37,8 @@ require.config({
         'angular-strap-tpl': ['angular','angular-strap'],
         'mobile-angular-ui':['angular','mobile-angular-ui-core','mobile-angular-ui-gestures','mobile-angular-ui.components'],
         'app': ['angular'],
-        'ngHandsontable':['handsontable','handsontable-full','css!../../../js/lib/handsontable/dist/handsontable.full.min.css']
+        'ngHandsontable':['handsontable','handsontable-full','css!../../../js/lib/handsontable/dist/handsontable.full.min.css'],
+        'angular-tree':['css!../../../js/lib/angular-tree/css/tree-control.css', 'css!../../../js/lib/angular-tree/css/tree-control-attribute.css'],
     },
     map: {
         '*': {

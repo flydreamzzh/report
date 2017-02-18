@@ -1,3 +1,27 @@
-<div ng-controller="menuCtrl">
-    menu
+<div class="menu">
+    <div class="menu-tree">
+        <div class="form-group-sm menu-search">
+            <input placeholder="Search" class="form-control" ng-model="predicate"/>
+        </div>
+        <treecontrol class="tree-classic"
+                     tree-model="dataForTheTree"
+                     options="treeOptions"
+                     filter-expression="predicate"
+                     filter-comparator="comparator"
+                     on-selection="showSelected(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even)"
+                     on-node-toggle="showToggle(node, expanded, $parentNode, $index, $first, $middle, $last, $odd, $even)">
+            <span class="menu-tree-item"><span class={{node.menu_icon}}></span> {{node.menu_name}}</span>
+        </treecontrol>
+    </div>
+    <div class="menu-operate">
+        <div class="menu-operate-button">
+            <button type="button" class="btn btn-default">上移</button>
+            <button type="button" class="btn btn-default">下移</button>
+            <button type="button" class="btn btn-default">修改</button>
+            <button type="button" class="btn btn-default">保存</button>
+        </div>
+    </div>
+    <div class="menu-message">
+
+    </div>
 </div>
