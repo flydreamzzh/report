@@ -37,6 +37,7 @@
 }
 
 .menu-operate-button button{
+    position: relative;
     border: 0;
     height: 100%;
     outline: 0;
@@ -45,9 +46,32 @@
     border: 1px dashed #9d9d9d;
     border-radius: 5px;
     background-color: transparent;
+    z-index: 2;
+    overflow: hidden;
 }
-.menu-operate-button button:hover{
+.menu-operate-button button:before{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    content: '';
+    border-radius: 5px;
+    background-color: silver;
+    height: 0;
+    width: 0;
+    transition: all 200ms ease;
+    opacity: 0.5;
+    z-index: -1;
+}
+.menu-operate-button button:hover:before{
     background-color: #e8e8e8;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.menu-operate-button button:active{
+    background-color: darkturquoise;
 }
 .menu-message{
     position: absolute;
