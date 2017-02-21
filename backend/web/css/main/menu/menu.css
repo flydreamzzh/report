@@ -23,18 +23,32 @@
 }
 .menu-operate{
     position: absolute;
-    height: 50px;
+    height: 40px;
     left: 180px;
     right: 0;
-    padding-top: 10px;
+    padding: 5px 5px;
     border-bottom: 1px solid silver;
     /*background-color: salmon;*/
 }
 .menu-operate .menu-operate-button{
     float: right;
     padding: 0 10px;
+    height: 100%;
 }
 
+.menu-operate-button button{
+    border: 0;
+    height: 100%;
+    outline: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px dashed #9d9d9d;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.menu-operate-button button:hover{
+    background-color: #e8e8e8;
+}
 .menu-message{
     position: absolute;
     top: 50px;
@@ -58,6 +72,11 @@
     }
     .menu-operate-button{
         padding: 0 !important;
+    }
+    .menu-operate-button button{
+        width: 100% !important;
+        height: 30px !important;
+        border: 0 !important;
     }
     .menu-message{
         position: absolute;

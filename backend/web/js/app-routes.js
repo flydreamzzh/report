@@ -16,10 +16,9 @@ define(['app'],function (app) {
                 $stateProviderRef = $stateProvider;
             }
         ]);
-    app.run(['$state', '$stateParams', '$rootScope','$http', function ($state, $stateParams, $rootScope,$http) {
+    app.run(['$state', '$stateParams','$urlRouter', '$rootScope','$http', function ($state, $stateParams, $urlRouter, $rootScope,$http) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        $urlRouterProviderRef.otherwise('/layout');
         $stateProviderRef
             .state('login', {
                 url: '/login',
@@ -48,7 +47,9 @@ define(['app'],function (app) {
                         controller: value.controller,
                 })
             });
-            $state.go('layout.home');
+            $urlRouter.sync();
+            $urlRouter.listen();
+            $urlRouterProviderRef.otherwise('/layout/home');
         });
     }]);
 
