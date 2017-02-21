@@ -16,7 +16,7 @@ define(['app'],function (app) {
                 $stateProviderRef = $stateProvider;
             }
         ]);
-    app.run(['$state', '$stateParams','$urlRouter', '$rootScope','$http', function ($state, $stateParams, $urlRouter, $rootScope,$http) {
+    app.run(['$state', '$stateParams','$urlRouter', '$rootScope','$location','$http', function ($state, $stateParams, $urlRouter, $rootScope,$location,$http) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         $stateProviderRef
@@ -50,6 +50,8 @@ define(['app'],function (app) {
             $urlRouter.sync();
             $urlRouter.listen();
             $urlRouterProviderRef.otherwise('/layout/home');
+            if(!$location.path())
+                $location.path('/layout/home');
         });
     }]);
 
