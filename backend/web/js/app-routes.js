@@ -50,7 +50,7 @@ define(['app'],function (app) {
             $urlRouter.sync();
             $urlRouter.listen();
             $urlRouterProviderRef.otherwise('/layout/home');
-            if(!$location.path())
+            if(!$location.path() || $location.path() == '/layout')
                 $location.path('/layout/home');
         });
     }]);

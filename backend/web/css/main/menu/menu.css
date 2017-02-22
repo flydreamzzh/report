@@ -43,11 +43,12 @@
     outline: 0;
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px dashed #9d9d9d;
+    border: 1px solid slategray;
     border-radius: 5px;
     background-color: transparent;
     z-index: 2;
     overflow: hidden;
+    box-shadow: 0 0 2px 1px silver;
 }
 .menu-operate-button button:before{
     position: absolute;
@@ -59,11 +60,11 @@
     background-color: silver;
     height: 0;
     width: 0;
-    transition: all 200ms ease;
+    transition: all 100ms ease;
     opacity: 0.5;
     z-index: -1;
 }
-.menu-operate-button button:hover:before{
+.menu-operate-button button:active:before{
     background-color: #e8e8e8;
     height: 100%;
     width: 100%;
@@ -71,7 +72,7 @@
     left: 0;
 }
 .menu-operate-button button:active{
-    background-color: darkturquoise;
+    box-shadow: 0 0 2px 1px dodgerblue;
 }
 .menu-message{
     position: absolute;
@@ -101,6 +102,8 @@
         width: 100% !important;
         height: 30px !important;
         border: 0 !important;
+        margin-top: 10px;
+        box-shadow: 0  0  0 0 !important;
     }
     .menu-message{
         position: absolute;
