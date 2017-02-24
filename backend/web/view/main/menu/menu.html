@@ -10,7 +10,7 @@
                      filter-comparator="comparator"
                      on-selection="showSelected(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even)"
                      on-node-toggle="showToggle(node, expanded, $parentNode, $index, $first, $middle, $last, $odd, $even)">
-            <span class="menu-tree-item"><span class={{node.menu_icon}}></span> {{node.menu_name}}</span>
+            <span class="menu-tree-item" ng-mousedown="openMenu()" ng-mouseup="cancelOpenMenu()"><span class={{node.menu_icon}}></span> {{node.menu_name}}</span>
         </treecontrol>
     </div>
     <div class="menu-operate">

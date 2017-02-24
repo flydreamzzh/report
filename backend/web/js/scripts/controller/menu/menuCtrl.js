@@ -3,7 +3,7 @@
  */
 define(['app', 'angular-tree',"css!../../../../css/main/menu/menu"],function(app){
     app.useModule('treeControl');
-    app.controller('menuCtrl',["$scope","$http",function($scope,$http){
+    app.controller('menuCtrl',["$scope","$timeout","$http",function($scope,$timeout,$http){
         $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             method: 'POST',
@@ -30,6 +30,14 @@ define(['app', 'angular-tree',"css!../../../../css/main/menu/menu"],function(app
         $scope.showToggle = function(node, expanded, $parentNode, $index, $first, $middle, $last, $odd, $even) {
             console.log(node, expanded, $parentNode, $index, $first, $middle, $last, $odd, $even)
         };
+        $scope.openMenu = function(){
+            window.a = $timeout(function(){
+                angular.element(".menu-message").addClass("menu-show");
+            },2000)
+        }
+        $scope.cancelOpenMenu = function(){
+            $timeout.cancel(window.a)
+        }
         $scope.showSelected = function(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even) {
             console.log(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even);
         };
