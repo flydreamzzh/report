@@ -94,7 +94,21 @@
     left: 0;
     right: 40px;
     z-index: 2;
-    background-color: seashell;
+    background-color: white;
+}
+.menu-info{
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -200px;
+    box-shadow: 0 0 20px 1px darkgrey;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;;
+    background-color: white;
 }
 .menu-message .menu-two{
     position: absolute;
@@ -102,7 +116,7 @@
     left: 0;
     right: 40px;
     z-index: 1;
-    background-color: #d5d5d5;
+    background-color: white;
 }
 .menu-div{
     position: absolute;
@@ -131,7 +145,6 @@
     border-left: 1px solid silver;
     background-color: white;
     word-wrap: break-word;
-    layout-flow: vertical-ideographic
 }
 .menu-div>div:hover{
     background-color: #e6e6e6;
