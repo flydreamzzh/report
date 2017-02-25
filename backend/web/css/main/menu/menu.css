@@ -88,28 +88,27 @@
     transition: all 200ms ease;
     /*background-color: #c7ddef;*/
 }
-.menu-message .menu-left{
+.menu-message .menu-one{
     position: absolute;
-    width: 50%;
     height: 100%;
     left: 0;
+    right: 40px;
     z-index: 2;
-    background-color: steelblue;
+    background-color: seashell;
 }
-.menu-message .menu-right{
+.menu-message .menu-two{
     position: absolute;
-    width: 50%;
     height: 100%;
-    right: 0;
+    left: 0;
+    right: 40px;
     z-index: 1;
-    background-color: darkorange;
+    background-color: #d5d5d5;
 }
 .menu-div{
     position: absolute;
-    width: 50px;
+    width: 40px;
     height: 100%;
     right: 0;
-    display: none;
 }
 .menu-div>div{
     position: relative;
@@ -119,7 +118,7 @@
     -ms-writing-mode: tb-rl;
     writing-mode: tb-rl;
     text-align: center;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 15px;
     letter-spacing: 5px;
     cursor: pointer;
@@ -128,9 +127,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     border-left: 1px solid silver;
     background-color: white;
+    word-wrap: break-word;
+    layout-flow: vertical-ideographic
 }
 .menu-div>div:hover{
     background-color: #e6e6e6;
@@ -143,21 +144,21 @@
     border-bottom: 1px solid silver;
 }
 .menu-chose{
-    z-index: 1;
+    z-index: 3 !important;
 }
-@media (max-width:1200px) {
-    .menu-message .menu-left,.menu-message .menu-right{
-        width: auto !important;
-        left: 0 !important;
-        right: 50px !important;
-    }
-    .menu-div{
-        display: block;
-    }
-    .menu-chose{
-        z-index: 3 !important;
-    }
-}
+/*@media (max-width:1200px) {*/
+    /*.menu-message .menu-one,.menu-message .menu-two{*/
+        /*width: auto !important;*/
+        /*left: 0 !important;*/
+        /*right: 50px !important;*/
+    /*}*/
+    /*.menu-div{*/
+        /*display: block;*/
+    /*}*/
+    /*.menu-chose{*/
+        /*z-index: 3 !important;*/
+    /*}*/
+/*}*/
 @media (max-width:768px) {
     .menu-tree{
         left: 0;
