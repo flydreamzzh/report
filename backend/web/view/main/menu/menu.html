@@ -24,9 +24,47 @@
     <div class="menu-message">
         <div class="menu-one">
             <div class="menu-info">
-                <form>
-                    
-                </form>
+                <div class="menu-info-head">
+                    用户系统
+                </div>
+                <div class="menu-info-form">
+                    <form role="form">
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">名称：</label>
+                            <input type="text"id="menu_name" name="menu_name" ng-model="menu.menu_name" class="form-control">
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">图标：</label>
+                            <span class="glyphicon glyphicon-download control-label"></span>
+                            <a href="javascript:void(0)" class="control-label">更换</a>
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">后台路由：</label>
+                            <input type="text" id="menu_url" name="menu_url" ng-model="menu.menu_url" class="form-control">
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">state参数：</label>
+                            <input type="text" id="state" name="state" ng-model="menu.state" class="form-control">
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label>是否抽象（ng路由参数）：</label>
+                            <input type="radio"  name="abstract" ng-model="menu.abstract" ng-checked = menu.abstract==true class="form-control">是&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio"  name="abstract" ng-model="menu.abstract" ng-checked = menu.abstract==false class="form-control">否
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">请求页面路由：</label>
+                            <input type="text" id="templateUrl" name="templateUrl" ng-model="menu.templateUrl" class="form-control">
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">页面控制器：</label>
+                            <input type="text" id="controllerUrl" name="controllerUrl" ng-model="menu.controllerUrl" class="form-control">
+                        </div>
+                        <div class="menu-form-input form-group-sm form-inline">
+                            <label class="control-label">views参数：</label>
+                            <textarea type="text" rows="10" id="views" name="views" ng-model="menu.views" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="menu-two" ng-class="{true:'menu-chose',false:''}[menu_chose]"></div>

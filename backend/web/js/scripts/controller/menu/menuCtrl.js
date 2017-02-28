@@ -1,9 +1,10 @@
 /**
  * Created by Administrator on 2016/12/3.
  */
-define(['app', 'angular-tree',"css!../../../../css/main/menu/menu"],function(app){
+define(['app', 'angular-tree',,'ngVerify',"css!../../../../css/main/menu/menu"],function(app){
     app.useModule('treeControl');
-    app.controller('menuCtrl',["$scope","$timeout","$http",function($scope,$timeout,$http){
+    app.useModule('ngVerify');
+    app.controller('menuCtrl',["$scope","$timeout","$http","ngVerify",function($scope,$timeout,$http,ngVerify){
         $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             method: 'POST',
@@ -39,7 +40,16 @@ define(['app', 'angular-tree',"css!../../../../css/main/menu/menu"],function(app
             $timeout.cancel(window.a)
         }
         $scope.showSelected = function(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even) {
-            console.log(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even);
+            $scope.menu = {
+                menu_name:"fsdfsd",
+                menu_url:"fsdfsd",
+                state:"fsdfsd",
+                abstract:false,
+                templateUrl:"fsdfsd",
+                controllerUrl:"fsdfsd",
+                views:"fsdfsd",
+            }
+            console.log($scope.menu);
         };
     }]);
 })

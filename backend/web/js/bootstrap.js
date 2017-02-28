@@ -20,6 +20,7 @@ require.config({
         'handsontable-full':'lib/handsontable/dist/handsontable.full.min',
         'ngHandsontable':'lib/ngHandsontable/dist/ngHandsontable.min',
         'angular-tree':'lib/angular-tree/angular-tree-control',
+        'ngVerify':'lib/ngVerify-master/js/ngVerify.min',
         'app': 'scripts/app',
         /**********************   Service  **************************/
         'post':'scripts/service/postFactory',
@@ -39,6 +40,7 @@ require.config({
         'app': ['angular'],
         'ngHandsontable':['handsontable','handsontable-full','css!../../../js/lib/handsontable/dist/handsontable.full.min.css'],
         'angular-tree':['css!../../../js/lib/angular-tree/css/tree-control.css', 'css!../../../js/lib/angular-tree/css/tree-control-attribute.css'],
+        'ngVerify':['css!./lib/ngVerify-master/css/ngVerify.css'],
     },
     map: {
         '*': {
