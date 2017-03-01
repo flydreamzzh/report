@@ -19,6 +19,11 @@ class MenuController extends BackendController
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'message' => [
+                'class' => '\backend\controllers\actions\ARInfo',
+                'model' => Menu::className(),
+                'index' => 'menu_id'
+            ],
         ];
     }
 
@@ -37,4 +42,5 @@ class MenuController extends BackendController
     {
         return json_encode((new Menu())->find()->menus());
     }
+    
 }

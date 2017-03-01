@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2016/12/3.
  */
-define(['app', 'angular-tree',,'ngVerify',"css!../../../../css/main/menu/menu"],function(app){
+define(['app','post' ,'angular-tree','ngVerify',"css!../../../../css/main/menu/menu"],function(app){
     app.useModule('treeControl');
     app.useModule('ngVerify');
     app.controller('menuCtrl',["$scope","$timeout","$http","ngVerify",function($scope,$timeout,$http,ngVerify){
@@ -40,17 +40,18 @@ define(['app', 'angular-tree',,'ngVerify',"css!../../../../css/main/menu/menu"],
             $timeout.cancel(window.a)
         }
         $scope.showSelected = function(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even) {
-            console.log($scope.menu);
-            $scope.menu = {
-                menu_name:"fsdfsd",
-                menu_url:"fsdfsd",
-                state:"fsdfsd",
-                abstract:"true",
-                templateUrl:"fsdfsd",
-                controllerUrl:"fsdfsd",
-                views:"fsdfsd",
-            }
-
+            $http({
+                //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                method: 'POST',
+                url: '/menu/message',
+                async: false,
+                data: node
+            }).success(function(data) {
+                if (data[0])
+                    $scope.menu = data[1];
+                else
+                    console.log(data[1]);
+            });
         };
     }]);
 })

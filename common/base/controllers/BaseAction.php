@@ -2,13 +2,13 @@
 namespace common\base\controllers;
 
 use yii\web\Controller;
-use common\base\interfaces\ContextInterface;
 use common\lib\SystemTrait;
+use yii\base\Action;
 
 /**
  * Base controller
  */
-class BaseController extends Controller implements ContextInterface
+class BaseAction extends Action
 {
     use SystemTrait;
     /**
