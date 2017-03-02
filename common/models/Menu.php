@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-use common\lib\TreeTrait;
+use common\base\model\TreeModel;
 
 /**
  * This is the model class for table "Menu".
@@ -24,9 +24,8 @@ use common\lib\TreeTrait;
  * @property integer $rgt
  * @property integer $ver
  */
-class Menu extends \yii\db\ActiveRecord
+class Menu extends TreeModel
 {
-    use TreeTrait;
     /**
      * @inheritdoc
      */

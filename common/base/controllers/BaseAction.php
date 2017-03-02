@@ -1,12 +1,13 @@
 <?php
 namespace common\base\controllers;
 
-use yii\web\Controller;
 use common\lib\SystemTrait;
 use yii\base\Action;
 
 /**
- * Base controller
+ * 
+ * @author Administrator
+ * @method string run
  */
 class BaseAction extends Action
 {

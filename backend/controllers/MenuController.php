@@ -24,6 +24,12 @@ class MenuController extends BackendController
                 'model' => Menu::className(),
                 'index' => 'menu_id'
             ],
+            'up' => [
+                'class' => '\backend\controllers\actions\TreeOperate',
+                'model' => Menu::className(),
+                'operate' => 'up'
+            ],
+            
         ];
     }
 

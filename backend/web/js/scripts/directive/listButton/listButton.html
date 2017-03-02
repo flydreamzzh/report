@@ -1,0 +1,74 @@
+<div class="sky-listButton">
+    <div class="sky-button">
+        <button onclick="aa()">
+            <span class="glyphicon glyphicon-download"></span>
+            下载
+        </button>
+    </div>
+    <div class="sky-button">
+        <button onclick="aa()">
+            <span class="glyphicon glyphicon-download"></span>
+            下载
+        </button>
+    </div>
+    <div class="sky-button">
+        <button onclick="aa()">
+            <span class="glyphicon glyphicon-download"></span>
+            新增
+        </button>
+    </div>
+
+</div>
+
+<style type="text/css">
+    .sky-listButton{
+        position: relative;
+        height: auto;
+        width: auto;
+    }
+    .sky-button{
+        position: relative;
+        display: inline-block;
+        float: right;
+    }
+    .sky-button button{
+        position: relative;
+        border: 0;
+        height: 100%;
+        outline: 0;
+        border-radius: 5px;
+        background-color: transparent;
+        z-index: 2;
+        overflow: hidden;
+    }
+    .sky-button button:before{
+        position: absolute;
+        display: block;
+        top: 50%;
+        left: 50%;
+        content: '';
+        border-radius: 5px;
+        background-color: silver;
+        height: 0;
+        width: 0;
+        transition: all 100ms ease;
+        opacity: 0.5;
+        z-index: -1;
+    }
+    .sky-button button:active:before{
+        background-color: #e8e8e8;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .sky-button span{
+        font-size: 15px;
+        color: dodgerblue;
+    }
+    .sky-button a{
+        font-size: 15px;
+        color: dodgerblue;
+        text-decoration: none;
+    }
+</style>

@@ -28,6 +28,7 @@ require.config({
         'style':'scripts/service/styleFactory',
         /**********************  directive **************************/
         'listMenu':'scripts/directive/listMenu/listMenu',
+        'listButton':'scripts/directive/listButton/listButton',
     },
     shim: {
         'angular': {exports: 'angular'},

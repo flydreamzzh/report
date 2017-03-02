@@ -28,7 +28,9 @@ class ARInfo extends BaseAction
     public $index;
     
     /**
-     * 执行方法
+     * 
+     * {@inheritDoc}
+     * @see \common\base\controllers\BaseAction::run()
      */
     public function run()
     {

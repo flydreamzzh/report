@@ -1,0 +1,15 @@
+.trash{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.trash-button{
+    position: absolute;
+    height: 35px;
+    padding: 8px;
+    width: 100%;
+    border-bottom: 1px solid silver;
+    background-color: #f8fdff;
+}
