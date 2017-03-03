@@ -98,7 +98,7 @@ trait TreeTrait
      *      ['<','grade',3]
      *   ]
      * 3)['grade'=>12,['<','grade',3]]
-     * 无限分类树数据表前置查询条件
+     * 无限分类树数据表前置查询条件(建议此内容主要是用于区分多套树的查询条件)
      * @return array
      */
     public function preCondition()
