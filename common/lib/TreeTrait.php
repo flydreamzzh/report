@@ -20,7 +20,10 @@ use yii\helpers\ArrayHelper;
  *          return ['<','grade',3];
  *      }
  * }
- *
+ * 
+ * 重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：重要提示：
+ *      建议表中使用一套树，即不存在相同的左右值
+ *      若要使用多套树，那么请谨慎使用过滤条件，并需要修改tree_getMinLeftAndMaxRight方法，取注释的内容
  * @author Administrator
  *        
  */
@@ -45,7 +48,7 @@ trait TreeTrait
      *
      * @var string
      */
-    private $preCondition = [];
+    private $preCondition = '';
     
     /**
      * 默认数据表最小左值
@@ -74,7 +77,7 @@ trait TreeTrait
             throw new Exception("无限分类树左右值字段名称配置失败");
         }
         if (is_array($preCondition)) {
-            $this->preCondition = $preCondition;
+            $this->preCondition = $this->dealWhere($preCondition);
         }
     }
 
@@ -90,12 +93,64 @@ trait TreeTrait
     /**
      * example：Yii2 AR模型的查询条件格式
      * return ['<','grade',3];
+     * 1)['grade'=>12]
+     * 2)[
+     *      ['<','grade',3]
+     *   ]
+     * 3)['grade'=>12,['<','grade',3]]
      * 无限分类树数据表前置查询条件
      * @return array
      */
     public function preCondition()
     {
         return [];
+    }
+    
+    /**
+     * example：Yii2 AR模型的查询条件格式
+     * return ['<','grade',3];
+     * 1)['grade'=>12]
+     * 2)[
+     *      ['<','grade',3]
+     *   ]
+     * 3)['grade'=>12,['<','grade',3]]
+     * 设置树查询条件
+     * @param array $condition
+     * @return $this
+     */
+    public function tree_where($condition = [])
+    {
+        $where = $this->dealWhere($condition);
+        if(trim($this->preCondition)) {
+            $con = [$this->preCondition, $where];
+            $this->preCondition = implode(' and ', $con);
+        }else {
+            $this->preCondition = $where; 
+        }
+        return $this;
+    }
+    
+    /**
+     * 处理YII格式的查询数组条件
+     * @param array $condition
+     * @return string
+     */
+    private function dealWhere(array $condition = [])
+    {
+        $where = [];
+        foreach ($condition as $key => $value) {
+            if (! is_array($value) && ! is_numeric($key)) {
+                $condition = (new Query())->where([$key => $value])->createCommand()->getRawSql();
+                $index = strrpos($condition, 'WHERE');
+                $where[] = substr($condition, $index+6);
+            } else if(is_array($value)){
+                $condition = (new Query())->where($value)->createCommand()->getRawSql();
+                $index = strrpos($condition, 'WHERE');
+                $where[] = substr($condition, $index+6);
+            }
+        }
+        $where = implode(' and ', $where);
+        return $where;
     }
     
     /**
@@ -139,8 +194,10 @@ trait TreeTrait
      */
     public function tree_getMinLeftAndMaxRight()
     {
-        $left = (new Query())->where($this->preCondition())->from($this->tableName())->min($this->left);
-        $right = (new Query())->where($this->preCondition())->from($this->tableName())->max($this->right);
+        //$left = (new Query())->where($this->preCondition())->from($this->tableName())->min($this->left);
+        //$right = (new Query())->where($this->preCondition())->from($this->tableName())->max($this->right);
+        $left = (new Query())->from($this->tableName())->min($this->left);
+        $right = (new Query())->from($this->tableName())->max($this->right);
         if(is_numeric($left) && is_numeric($right)) {
             return [(int)$left, (int)$right];
         } else {
@@ -197,7 +254,6 @@ trait TreeTrait
             $transaction = Yii::$app->db->beginTransaction();
             try {
                 $lr = $this->tree_getLeftAndRight();
-                $mlr = $this->tree_getMinLeftAndMaxRight();
                 $lefts = $this->updateAllCounters([$this->left => ($this->left + 2)], ['>', $this->left, max($lr)]);
                 $rights = $this->updateAllCounters([$this->right => ($this->right + 2)], ['>=', $this->right, max($lr)]);
                 if($lefts || $rights) {
@@ -387,12 +443,15 @@ trait TreeTrait
     public function tree_TopNodes()
     {
         $lr = $this->tree_getMinLeftAndMaxRight();
+        if ($lr == null)
+            return [];
         $models = $this->find()
             ->where(['>', $this->left, min($lr)-1])
             ->andWhere(['<', $this->right, max($lr)+1])
             ->andWhere($this->preCondition)
             ->orderBy([$this->left => SORT_ASC])
             ->all();
+        $directlyChildren = [];
         foreach ($models as $node) {
             if (! $node->tree_directlyParent()) {
                 $directlyChildren[] = $node;

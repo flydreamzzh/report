@@ -4,6 +4,7 @@ namespace backend\controllers;
 use yii\filters\VerbFilter;
 use backend\controllers\base\BackendController;
 use common\models\Menu;
+use common\models\Button;
 
 /**
  * @author Administrator
@@ -28,6 +29,9 @@ class TestController extends BackendController
     
     public function actionIndex()
     {
+//         var_dump((new Query())->where(['>','lft', 5])->createCommand()->execute());exit();
+        var_dump(((new Menu())->tree_where([['>','lft', 5],'lft'=>10])->tree_list()));exit();
+        var_dump((new Button())->find()->menuButtons('s'));exit();
         $model = Menu::findOne(['menu_id'=>'MENU0005']);
         $parentModel = Menu::findOne(['menu_id'=>'MENU0003']);
 //         var_dump($model->tree_getMinLeftAndMaxRight());

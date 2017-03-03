@@ -84,6 +84,14 @@ class Menu extends TreeModel
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getButtons()
+    {
+        return $this->hasMany(Button::className(), ['menu_id' => 'menu_id']);
+    }
+    
+    /**
      * @inheritdoc
      * @return \common\models\query\MenuQuery the active query used by this AR class.
      */
