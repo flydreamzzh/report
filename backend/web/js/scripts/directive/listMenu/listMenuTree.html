@@ -1,5 +1,5 @@
 <div class="tree-item">
-    <a class="list-group-item"  ng-click="goState(data.state, data.is_end)" title={{data.menu_name}}><span class={{data.menu_icon}}></span>{{data.menu_name}}</a>
+    <a  ng-click="goState(data.state, data.is_end)" title={{data.menu_name}}><span class={{data.menu_icon}}></span>{{data.menu_name}}</a>
 </div>
 <ul>
     <li ng-repeat="data in data.tree_children" ng-include="'js/scripts/directive/listMenu/listMenuTree.html'"></li>

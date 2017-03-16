@@ -39,7 +39,7 @@ class MenuQuery extends \yii\db\ActiveQuery
     public function stateMenu()
     {
         $menu = new \common\models\Menu();
-        $menus = $menu->find()->where(['is_end' => true])->andWhere($menu->preCondition())->asArray()->all();
+        $menus = $menu->find()->where(['is_end' => true])->asArray()->all();
         return $menus;
     }
     

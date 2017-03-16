@@ -20,6 +20,7 @@
 }
 .menu-tree-item{
     white-space: nowrap;
+    color: white;
 }
 .menu-operate{
     position: absolute;
@@ -92,10 +93,10 @@
     position: absolute;
     height: 100%;
     left: 0;
-    right: 40px;
+    right: 0;
     z-index: 2;
     overflow: hidden;
-    background-color: white;
+    /*background-color: white;*/
 }
 .menu-info{
     position: relative;
@@ -139,7 +140,7 @@
     left: 0;
     right: 40px;
     z-index: 1;
-    background-color: white;
+    /*background-color: white;*/
 }
 .menu-div{
     position: absolute;

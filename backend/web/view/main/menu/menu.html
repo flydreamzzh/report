@@ -3,9 +3,10 @@
         <div class="form-group-sm menu-search">
             <input placeholder="Search" class="form-control" ng-model="predicate"/>
         </div>
-        <treecontrol class="tree-classic"
+        <treecontrol class="tree-light"
                      tree-model="dataForTheTree"
                      options="treeOptions"
+                     expanded-nodes = "dataForTheTree"
                      filter-expression="predicate"
                      filter-comparator="comparator"
                      on-selection="showSelected(node, selected, $parentNode, $index, $first, $middle, $last, $odd, $even)"
@@ -24,9 +25,9 @@
     <div class="menu-message">
         <div class="menu-one">
             <div class="menu-info">
-                <div class="menu-info-head">
-                    用户系统
-                </div>
+                <!--<div class="menu-info-head">-->
+                    <!--用户系统-->
+                <!--</div>-->
                 <div class="menu-info-form">
                     <form role="form">
                         <div class="menu-form-input form-group-sm form-inline">
@@ -67,11 +68,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="menu-two" ng-class="{true:'menu-chose',false:''}[menu_chose]"></div>
-        <div class="menu-div">
-            <div ng-click="menu_chose = false">基础信息</div>
-            <div ng-click="menu_chose = true">其他配置</div>
         </div>
     </div>
 </div>
